@@ -39,7 +39,7 @@
         "email": "abc"
     },
     {
-        "Status": "offline",
+        "Status": "online",
         "hashedPassword": "j0N17GXCxAkqHMIednEkcurg3pmThOgyfElZVxIducI=",
         "profile": {
             "profilePhoto": "C:\\Users\\Victus\\Downloads\\downloaded images\\armchair.png",
