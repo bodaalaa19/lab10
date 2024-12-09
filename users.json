@@ -39,7 +39,7 @@
         "email": "abc"
     },
     {
-        "Status": "online",
+        "Status": "offline",
         "hashedPassword": "j0N17GXCxAkqHMIednEkcurg3pmThOgyfElZVxIducI=",
         "profile": {
             "profilePhoto": "C:\\Users\\Victus\\Downloads\\downloaded images\\armchair.png",
@@ -232,5 +232,31 @@
         "userName": "mo",
         "userId": "mo",
         "email": ""
+    },
+    {
+        "Status": "online",
+        "hashedPassword": "B3I4NPLqX4LEmngH+SPw9uZq4/CvUNUjM8HQ0bidKw4=",
+        "profile": {
+            "profilePhoto": "ghvh",
+            "coverPhoto": "hhh",
+            "bio": "hfc"
+        },
+        "dateOfBirth": "0017-05-13",
+        "userName": "shams",
+        "userId": "11",
+        "email": "shams"
+    },
+    {
+        "Status": "online",
+        "hashedPassword": "WXwow4HvH+7mHz6Wd6YotMvUHPslOciTgGLh3yqILTk=",
+        "profile": {
+            "profilePhoto": "ghvh",
+            "coverPhoto": "hhh",
+            "bio": "hfc"
+        },
+        "dateOfBirth": "0016-03-26",
+        "userName": "rr",
+        "userId": "rr",
+        "email": "rr"
     }
 ]
