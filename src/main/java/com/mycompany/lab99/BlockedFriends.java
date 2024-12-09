@@ -81,15 +81,15 @@ public class BlockedFriends {
     }
     
     public static boolean blockFriend(String userId,String blockedUserId){
-        ArrayList<User> friends =Friends.viewFriends(userId);
+        ArrayList<User> users =loadUsers();
         ArrayList<JSONObject> blockedList =loadBlockedFriends();
         boolean blockedFlag=false;
         
-        for(int i=0;i<friends.size();i++){
-            if(blockedUserId.equals(friends.get(i).getUserId())){
+        for(int i=0;i<users.size();i++){
+            if(blockedUserId.equals(users.get(i).getUserId())){
                 JSONObject blocked=new JSONObject();
                 blocked.put("user",userId);
-                blocked.put("blockeduser", friends.get(i).getUserId());
+                blocked.put("blockeduser", users.get(i).getUserId());
                 blockedList.add(blocked);
                 Friends.removeFriendship(userId, blockedUserId);
                 blockedFlag=true;
