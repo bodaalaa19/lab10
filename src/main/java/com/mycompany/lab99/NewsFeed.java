@@ -489,11 +489,19 @@ public class NewsFeed extends javax.swing.JFrame {
     }//GEN-LAST:event_UnblockBtnActionPerformed
 
     private void blockButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_blockButtonActionPerformed
-        // TODO add your handling code here:
+        //block friend
+        String f=searchList.getSelectedValue();
+        String f1=f.split(" ")[0];
+        blockFriend(LoginScreen.activeUser.getUserId(),f1);
+        JOptionPane.showMessageDialog(this, "blocked");
     }//GEN-LAST:event_blockButtonActionPerformed
 
     private void removeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeButtonActionPerformed
-        
+        //remove friend
+        String f=searchList.getSelectedValue();
+        String f1=f.split(" ")[0];
+        removeFriendship(LoginScreen.activeUser.getUserId(),f1);
+        JOptionPane.showMessageDialog(this, "removed");
     }//GEN-LAST:event_removeButtonActionPerformed
 
     private void viewProfileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewProfileButtonActionPerformed

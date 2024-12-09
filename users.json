@@ -245,5 +245,18 @@
         "userName": "shams",
         "userId": "11",
         "email": "shams"
+    },
+    {
+        "Status": "online",
+        "hashedPassword": "WXwow4HvH+7mHz6Wd6YotMvUHPslOciTgGLh3yqILTk=",
+        "profile": {
+            "profilePhoto": "ghvh",
+            "coverPhoto": "hhh",
+            "bio": "hfc"
+        },
+        "dateOfBirth": "0016-03-26",
+        "userName": "rr",
+        "userId": "rr",
+        "email": "rr"
     }
 ]

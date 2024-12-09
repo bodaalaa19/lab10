@@ -552,6 +552,7 @@ this.changepassword.setVisible(true);
         String f=myFriendsList.getSelectedValue();
         String f1=f.split(" ")[0];
         removeFriendship(LoginScreen.activeUser.getUserId(),f1);
+        JOptionPane.showMessageDialog(this, "removed");
     }//GEN-LAST:event_RemoveFriendBtnActionPerformed
 
     private void refreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshActionPerformed
