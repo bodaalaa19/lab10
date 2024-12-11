@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
+import javax.swing.JOptionPane;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -218,6 +219,47 @@ public class Group {
         }
 
         return groupList;
+    }
+    
+    public static void addToGroup(String groupId,String userId){
+        ArrayList<Group> groups=loadGroups();
+        ArrayList<User> users=User.loadUsers();
+        
+        boolean userExists=false;
+        for(int i=0;i<users.size();i++){
+            if(userId.equals(users.get(i).getUserId())){
+                userExists=true;
+                break;
+            }
+        }
+        
+        if(!userExists){
+            JOptionPane.showMessageDialog(null, "User doesnt exist");
+            return;
+        }
+        
+        Group wantedGroup=null;
+        for(int i=0;i<groups.size();i++){
+            if(groupId.equals(groups.get(i).getGroupId())){
+                wantedGroup=groups.get(i);
+                break;
+            }
+        }
+        
+        if(wantedGroup==null){
+            JOptionPane.showMessageDialog(null, "Group doesnt exist");
+            return;
+        }
+        
+        if(wantedGroup.getUserIds().contains(userId)){
+            JOptionPane.showMessageDialog(null, "User already in group");
+            return;
+        }
+        
+        wantedGroup.getUserIds().add(userId);
+        JOptionPane.showMessageDialog(null, "User added to the group.");
+
+        Group.saveGroups(groups);
     }
     
     

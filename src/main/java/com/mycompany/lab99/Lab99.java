@@ -36,7 +36,7 @@ import org.json.JSONObject;
 public class Lab99 {
 
     public static void main(String[] args) throws ParseException, NoSuchAlgorithmException {
-        ArrayList<String> group1Admins=new ArrayList<>();
+        /*ArrayList<String> group1Admins=new ArrayList<>();
         group1Admins.add("admin1");
         group1Admins.add("admin2");
         
@@ -59,8 +59,8 @@ public class Lab99 {
         
         
         
-        ArrayList<Group> loadedGroups=Group.loadGroups();
-            for(int i=0;i<loadedGroups.size();i++){
+        ArrayList<Group> loadedGroups=Group.loadGroups();*/
+            /*for(int i=0;i<loadedGroups.size();i++){
                 System.out.println(loadedGroups.get(i).getGroupName());
                 System.out.println(loadedGroups.get(i).getGroupId());
                 System.out.println(loadedGroups.get(i).getPhotoPath());
@@ -80,7 +80,9 @@ public class Lab99 {
                     System.out.println(loadedGroups.get(i).getPosts().get(j).getImageSource());
                     System.out.println(loadedGroups.get(i).getPosts().get(j).getTimeStamp());
                 }
-            }
+            }*/
+            
+            Group.addToGroup("group1667325837", "j");
         }
 
 }
