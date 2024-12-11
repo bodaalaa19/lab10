@@ -36,7 +36,51 @@ import org.json.JSONObject;
 public class Lab99 {
 
     public static void main(String[] args) throws ParseException, NoSuchAlgorithmException {
+        ArrayList<String> group1Admins=new ArrayList<>();
+        group1Admins.add("admin1");
+        group1Admins.add("admin2");
         
-    }
+        ArrayList<String> group1Users=new ArrayList<>();
+        group1Users.add("user1");
+        group1Users.add("user2");
+        group1Users.add("user3");
+        
+        ArrayList<Post> groupPosts=Post.loadPostsForUser("bba");
+        
+        Group group1=new Group("group1","testpath1");
+        group1.setAdminIds(group1Admins);
+        group1.setUserIds(group1Users);
+        group1.setPosts(groupPosts);
+        
+        ArrayList<Group> groups=new ArrayList<>();
+        groups.add(group1);
+        
+        Group.saveGroups(groups);
+        
+        
+        
+        ArrayList<Group> loadedGroups=Group.loadGroups();
+            for(int i=0;i<loadedGroups.size();i++){
+                System.out.println(loadedGroups.get(i).getGroupName());
+                System.out.println(loadedGroups.get(i).getGroupId());
+                System.out.println(loadedGroups.get(i).getPhotoPath());
+    
+                for(int j=0;j<loadedGroups.get(i).getAdminIds().size();j++){
+                    System.out.println(loadedGroups.get(i).getAdminIds().get(j));
+                }
+    
+                for(int j=0;j<loadedGroups.get(i).getUserIds().size();j++){
+                    System.out.println(loadedGroups.get(i).getUserIds().get(j));
+                }
+    
+                for(int j=0;j<loadedGroups.get(i).getPosts().size();j++){
+                    System.out.println(loadedGroups.get(i).getPosts().get(j).getContentId());
+                    System.out.println(loadedGroups.get(i).getPosts().get(j).getUserId());
+                    System.out.println(loadedGroups.get(i).getPosts().get(j).getContent());
+                    System.out.println(loadedGroups.get(i).getPosts().get(j).getImageSource());
+                    System.out.println(loadedGroups.get(i).getPosts().get(j).getTimeStamp());
+                }
+            }
+        }
 
 }

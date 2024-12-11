@@ -234,7 +234,7 @@
         "email": ""
     },
     {
-        "Status": "online",
+        "Status": "offline",
         "hashedPassword": "B3I4NPLqX4LEmngH+SPw9uZq4/CvUNUjM8HQ0bidKw4=",
         "profile": {
             "profilePhoto": "ghvh",
@@ -247,7 +247,7 @@
         "email": "shams"
     },
     {
-        "Status": "online",
+        "Status": "offline",
         "hashedPassword": "WXwow4HvH+7mHz6Wd6YotMvUHPslOciTgGLh3yqILTk=",
         "profile": {
             "profilePhoto": "ghvh",
@@ -258,5 +258,18 @@
         "userName": "rr",
         "userId": "rr",
         "email": "rr"
+    },
+    {
+        "Status": "offline",
+        "hashedPassword": "NyaDNd1pMQRb3N+SYj/4GaZCRLU9DnRtQ4eXNJ1NpXg=",
+        "profile": {
+            "profilePhoto": "ghvh",
+            "coverPhoto": "hhh",
+            "bio": "hfc"
+        },
+        "dateOfBirth": "2000-04-22",
+        "userName": "testtest",
+        "userId": "testtest",
+        "email": "testtest"
     }
 ]

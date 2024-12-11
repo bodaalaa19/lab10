@@ -1,0 +1,30 @@
+[{
+    "groupName": "group1",
+    "groupId": "group1667325837",
+    "groupPhoto": "testpath1",
+    "posts": [
+        {
+            "imagesrc": "imagesrc1",
+            "postId": "post1279796710",
+            "userId": "bba",
+            "content": "postcontenttest1",
+            "timestamp": "04-12-2024 16:48"
+        },
+        {
+            "imagesrc": "imagesrc2",
+            "postId": "post381767320",
+            "userId": "bba",
+            "content": "postcontenttest2",
+            "timestamp": "05-12-2024 04:48"
+        }
+    ],
+    "admins": [
+        {"adminId": "admin1"},
+        {"adminId": "admin2"}
+    ],
+    "users": [
+        {"userId": "user1"},
+        {"userId": "user2"},
+        {"userId": "user3"}
+    ]
+}]
