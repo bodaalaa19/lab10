@@ -1,38 +1,28 @@
 [{
     "groupName": "group1",
-    "groupId": "group747358394",
-    "groupPhoto": "testpath1",
+    "groupId": "group1645596773",
+    "groupCreator": "j",
+    "groupPhoto": "photo1",
     "posts": [
         {
-            "imagesrc": "C:\\Users\\Victus\\Downloads\\close.png",
-            "postId": "post191806060",
+            "imagesrc": "image1",
+            "postId": "post1822775443",
             "userId": "best",
-            "content": "heeeeeeeeeeeeeey",
-            "timestamp": "04-12-2024 17:57"
+            "content": "bestpost1ingroup",
+            "timestamp": "11-12-2024 17:15"
         },
         {
-            "imagesrc": "C:\\Users\\Victus\\Downloads\\downloaded images\\penguin.png",
-            "postId": "post741200370",
+            "imagesrc": "img2",
+            "postId": "post1953790154",
             "userId": "best",
-            "content": "hhhhhhhhhhhh",
-            "timestamp": "04-12-2024 21:42"
-        },
-        {
-            "imagesrc": "image.jpg",
-            "postId": "post491674594",
-            "userId": "best",
-            "content": "testtesttest",
-            "timestamp": "11-12-2024 15:17"
+            "content": "bestPost2",
+            "timestamp": "11-12-2024 17:15"
         }
     ],
-    "admins": [
-        {"adminId": "admin1"},
-        {"adminId": "admin2"}
-    ],
+    "admins": [{"adminId": "j"}],
     "users": [
-        {"userId": "user1"},
-        {"userId": "user2"},
-        {"userId": "user3"},
-        {"userId": "best"}
+        {"userId": "j"},
+        {"userId": "best"},
+        {"userId": "oo"}
     ]
 }]

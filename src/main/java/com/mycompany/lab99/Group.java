@@ -17,26 +17,35 @@ public class Group {
     private String groupName;
     private String groupId;
     private String photoPath;
+    private String groupCreator;
     private ArrayList<String> adminIds;
     private ArrayList<String> userIds;
     private ArrayList<Post> posts;
 
-    public Group(String groupName, String photoPath) {
+    //constructor to create new group
+    public Group(String userId, String groupName, String photoPath) {
+        this.groupCreator=userId;
         this.groupName = groupName;
         this.photoPath = photoPath;
         adminIds = new ArrayList<>();
+        adminIds.add(this.groupCreator);
         userIds = new ArrayList<>();
+        userIds.add(this.groupCreator);
         posts = new ArrayList<>();
         Random random=new Random(); //generates random ids for groups
         setGroupId("group"+random.nextInt(Integer.MAX_VALUE));
     }
 
-    public Group(String groupName, String groupId, String photoPath) {
+    //constructor to load groups from json file
+    public Group(String groupCreator,String groupName, String groupId, String photoPath) {
+        this.groupCreator=groupCreator;
         this.groupName = groupName;
         this.groupId = groupId;
         this.photoPath = photoPath;
         adminIds = new ArrayList<>();
+        adminIds.add(this.groupCreator);
         userIds = new ArrayList<>();
+        userIds.add(this.groupCreator);
         posts = new ArrayList<>();
     }
     
@@ -89,6 +98,14 @@ public class Group {
     public void setPosts(ArrayList<Post> posts) {
         this.posts = posts;
     }
+
+    public String getGroupCreator() {
+        return groupCreator;
+    }
+
+    public void setGroupCreator(String groupCreator) {
+        this.groupCreator = groupCreator;
+    }
     
     
     public static void saveGroups(ArrayList<Group> list) {
@@ -98,6 +115,7 @@ public class Group {
             j.put("groupName", group.getGroupName());
             j.put("groupId", group.getGroupId());
             j.put("groupPhoto", group.getPhotoPath());
+            j.put("groupCreator", group.getGroupCreator());
             
             JSONArray adminArray=new JSONArray();
             ArrayList<String> admins=group.getAdminIds();
@@ -168,10 +186,11 @@ public class Group {
                 String groupName = groupJson.getString("groupName");
                 String groupId = groupJson.getString("groupId");
                 String groupPhoto = groupJson.getString("groupPhoto");
+                String groupCreator=groupJson.getString("groupCreator");
 
 
                 // Create a Group object
-                Group group=new Group(groupName,groupId,groupPhoto);
+                Group group=new Group(groupCreator,groupName,groupId,groupPhoto);
 
                 
                 if (groupJson.has("admins")) {
@@ -263,7 +282,7 @@ public class Group {
         Group.saveGroups(groups);
     }
     
-    public static void removeUserFromGroup(String groupId, String userId){
+    public static void removeUserFromGroup(String groupId, String adminId, String userId){
         ArrayList<Group> groups=loadGroups();
         //ArrayList<User> users=User.loadUsers();
         
@@ -280,11 +299,27 @@ public class Group {
             return;
         }
         
-        if(wantedGroup.getUserIds().contains(userId)){
-            wantedGroup.getUserIds().remove(userId);
-            JOptionPane.showMessageDialog(null, "User removed from the group!");
-            Group.saveGroups(groups);
-            return;
+        boolean removeMemberAccess=false;
+        if(wantedGroup.getAdminIds().contains(adminId)){
+            removeMemberAccess=true;
+        }
+        
+        
+        if(removeMemberAccess){
+            if(wantedGroup.getUserIds().contains(userId)){
+                if(userId.equals(wantedGroup.getGroupCreator())){
+                    JOptionPane.showMessageDialog(null, "Cannot remove Group Creator!");
+                    return;
+                }else{
+                    wantedGroup.getUserIds().remove(userId);
+                    JOptionPane.showMessageDialog(null, "User removed from the group!");
+                    Group.saveGroups(groups);
+                    return;
+                }
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Only admins can remove users!");
+                    return;
         }
         
         JOptionPane.showMessageDialog(null, "User doesn't exist in the group!");
