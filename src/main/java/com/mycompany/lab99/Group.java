@@ -401,4 +401,94 @@ public class Group {
         
         Group.saveGroups(groups);
     }
+    
+    public static void editGroupPost(String groupId,String userId,String postId, String content){
+        ArrayList<Group> groups=loadGroups();
+        //ArrayList<User> users=User.loadUsers();
+        
+        Group wantedGroup=null;
+        for(int i=0;i<groups.size();i++){
+            if(groupId.equals(groups.get(i).getGroupId())){
+                wantedGroup=groups.get(i);
+                break;
+            }
+        }
+        
+        if(wantedGroup==null){
+            JOptionPane.showMessageDialog(null, "Group doesnt exist");
+            return;
+        }
+        
+        ArrayList<Post> groupPosts=wantedGroup.getPosts();
+        Post post=null;
+        for(int i=0;i<groupPosts.size();i++){
+            if(groupPosts.get(i).getContentId().equals(postId)){
+                post=groupPosts.get(i);
+                break;
+            }
+        }
+        
+        boolean editPostAccess=false;
+        if(post==null){
+            JOptionPane.showMessageDialog(null, "Post doesnt exist");
+            return;
+        }else{
+            if(wantedGroup.getAdminIds().contains(userId) || post.getUserId().equals(userId)){
+                editPostAccess=true;
+            }
+        }
+        
+        if(editPostAccess){
+            post.setContent(content);
+            JOptionPane.showMessageDialog(null, "Post Edited");
+        }
+        Group.saveGroups(groups);
+    }
+    
+    public static ArrayList<Group> getAllGroupPosts(String groupId){
+        ArrayList<Group> allGroupPosts=new ArrayList<>();
+        
+        
+        
+        return allGroupPosts;
+    }
+    
+    public static void promoteToAdmin(String groupId,String adminId,String userId){
+        ArrayList<Group> groups=loadGroups();
+        //ArrayList<User> users=User.loadUsers();
+        
+        Group wantedGroup=null;
+        for(int i=0;i<groups.size();i++){
+            if(groupId.equals(groups.get(i).getGroupId())){
+                wantedGroup=groups.get(i);
+                break;
+            }
+        }
+        
+        if(wantedGroup==null){
+            JOptionPane.showMessageDialog(null, "Group doesnt exist");
+            return;
+        }
+        
+        if (!wantedGroup.getUserIds().contains(userId)) {
+            JOptionPane.showMessageDialog(null, "User is not a member of the group.");
+            return;
+        }
+        
+        boolean promote=false;
+        if(wantedGroup.getAdminIds().contains(adminId)){
+            promote=true;
+        }
+        
+        if(promote){
+            if(!wantedGroup.getAdminIds().contains(userId)){
+                wantedGroup.getAdminIds().add(userId);
+                JOptionPane.showMessageDialog(null, "User promoted to Admin!");
+            }else{
+                JOptionPane.showMessageDialog(null, "User is already an Admin!");
+            }
+        }
+            
+        Group.saveGroups(groups);
+    }
 }
