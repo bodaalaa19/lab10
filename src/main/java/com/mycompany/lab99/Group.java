@@ -262,6 +262,33 @@ public class Group {
         Group.saveGroups(groups);
     }
     
-    
+    public static void removeUserFromGroup(String groupId, String userId){
+        ArrayList<Group> groups=loadGroups();
+        //ArrayList<User> users=User.loadUsers();
+        
+        Group wantedGroup=null;
+        for(int i=0;i<groups.size();i++){
+            if(groupId.equals(groups.get(i).getGroupId())){
+                wantedGroup=groups.get(i);
+                break;
+            }
+        }
+        
+        if(wantedGroup==null){
+            JOptionPane.showMessageDialog(null, "Group doesnt exist");
+            return;
+        }
+        
+        if(wantedGroup.getUserIds().contains(userId)){
+            wantedGroup.getUserIds().remove(userId);
+            JOptionPane.showMessageDialog(null, "User removed from the group!");
+            Group.saveGroups(groups);
+            return;
+        }
+        
+        JOptionPane.showMessageDialog(null, "User doesn't exist in the group!");
+        
+        
+    }
     
 }

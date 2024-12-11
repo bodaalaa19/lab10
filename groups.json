@@ -25,7 +25,6 @@
     "users": [
         {"userId": "user1"},
         {"userId": "user2"},
-        {"userId": "user3"},
-        {"userId": "j"}
+        {"userId": "user3"}
     ]
 }]

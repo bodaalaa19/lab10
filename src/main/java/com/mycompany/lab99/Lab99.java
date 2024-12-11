@@ -82,7 +82,8 @@ public class Lab99 {
                 }
             }*/
             
-            Group.addToGroup("group1667325837", "j");
+            //Group.addToGroup("group1667325837", "j");
+            Group.removeUserFromGroup("group1667325837", "j");
         }
 
 }
