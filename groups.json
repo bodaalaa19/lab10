@@ -1,21 +1,28 @@
 [{
     "groupName": "group1",
-    "groupId": "group1667325837",
+    "groupId": "group747358394",
     "groupPhoto": "testpath1",
     "posts": [
         {
-            "imagesrc": "imagesrc1",
-            "postId": "post1279796710",
-            "userId": "bba",
-            "content": "postcontenttest1",
-            "timestamp": "04-12-2024 16:48"
+            "imagesrc": "C:\\Users\\Victus\\Downloads\\close.png",
+            "postId": "post191806060",
+            "userId": "best",
+            "content": "heeeeeeeeeeeeeey",
+            "timestamp": "04-12-2024 17:57"
         },
         {
-            "imagesrc": "imagesrc2",
-            "postId": "post381767320",
-            "userId": "bba",
-            "content": "postcontenttest2",
-            "timestamp": "05-12-2024 04:48"
+            "imagesrc": "C:\\Users\\Victus\\Downloads\\downloaded images\\penguin.png",
+            "postId": "post741200370",
+            "userId": "best",
+            "content": "hhhhhhhhhhhh",
+            "timestamp": "04-12-2024 21:42"
+        },
+        {
+            "imagesrc": "image.jpg",
+            "postId": "post491674594",
+            "userId": "best",
+            "content": "testtesttest",
+            "timestamp": "11-12-2024 15:17"
         }
     ],
     "admins": [
@@ -25,6 +32,7 @@
     "users": [
         {"userId": "user1"},
         {"userId": "user2"},
-        {"userId": "user3"}
+        {"userId": "user3"},
+        {"userId": "best"}
     ]
 }]

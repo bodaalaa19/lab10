@@ -45,7 +45,7 @@ public class Lab99 {
         group1Users.add("user2");
         group1Users.add("user3");
         
-        ArrayList<Post> groupPosts=Post.loadPostsForUser("bba");
+        ArrayList<Post> groupPosts=Post.loadPostsForUser("best");
         
         Group group1=new Group("group1","testpath1");
         group1.setAdminIds(group1Admins);
@@ -55,12 +55,12 @@ public class Lab99 {
         ArrayList<Group> groups=new ArrayList<>();
         groups.add(group1);
         
-        Group.saveGroups(groups);
+        Group.saveGroups(groups);*/
         
         
         
-        ArrayList<Group> loadedGroups=Group.loadGroups();*/
-            /*for(int i=0;i<loadedGroups.size();i++){
+        /*ArrayList<Group> loadedGroups=Group.loadGroups();
+            for(int i=0;i<loadedGroups.size();i++){
                 System.out.println(loadedGroups.get(i).getGroupName());
                 System.out.println(loadedGroups.get(i).getGroupId());
                 System.out.println(loadedGroups.get(i).getPhotoPath());
@@ -82,8 +82,12 @@ public class Lab99 {
                 }
             }*/
             
-            //Group.addToGroup("group1667325837", "j");
-            Group.removeUserFromGroup("group1667325837", "j");
+            //Group.addToGroup("group747358394", "best");
+            //Group.removeUserFromGroup("group747358394", "j");
+            
+            //Group.removePostFromGroup("group747358394", "bestt", "post191806060");
+            
+            //Group.addPostToGroup("group747358394", "best", "testtesttest", LocalDateTime.now(), "image.jpg");
         }
 
 }

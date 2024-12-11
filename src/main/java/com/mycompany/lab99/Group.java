@@ -221,6 +221,7 @@ public class Group {
         return groupList;
     }
     
+    
     public static void addToGroup(String groupId,String userId){
         ArrayList<Group> groups=loadGroups();
         ArrayList<User> users=User.loadUsers();
@@ -291,4 +292,78 @@ public class Group {
         
     }
     
+    public static void addPostToGroup(String groupId, String userId, String content,LocalDateTime timeStamp, String imageSource){
+        ArrayList<Group> groups=loadGroups();
+        //ArrayList<User> users=User.loadUsers();
+        
+        Group wantedGroup=null;
+        for(int i=0;i<groups.size();i++){
+            if(groupId.equals(groups.get(i).getGroupId())){
+                wantedGroup=groups.get(i);
+                break;
+            }
+        }
+        
+        if(wantedGroup==null){
+            JOptionPane.showMessageDialog(null, "Group doesnt exist");
+            return;
+        }
+        
+        if (!wantedGroup.getUserIds().contains(userId)) {
+            JOptionPane.showMessageDialog(null, "User is not a member of the group.");
+            return;
+        }
+        
+        Post post=new Post(userId,content,timeStamp,imageSource);
+        wantedGroup.getPosts().add(post);
+        JOptionPane.showMessageDialog(null, "Post added!");
+        Group.saveGroups(groups);
+        
+    }
+    
+    public static void removePostFromGroup(String groupId, String userId,String postId){
+        ArrayList<Group> groups=loadGroups();
+        //ArrayList<User> users=User.loadUsers();
+        
+        Group wantedGroup=null;
+        for(int i=0;i<groups.size();i++){
+            if(groupId.equals(groups.get(i).getGroupId())){
+                wantedGroup=groups.get(i);
+                break;
+            }
+        }
+        
+        if(wantedGroup==null){
+            JOptionPane.showMessageDialog(null, "Group doesnt exist");
+            return;
+        }
+        
+        ArrayList<Post> groupPosts=wantedGroup.getPosts();
+        Post post=null;
+        for(int i=0;i<groupPosts.size();i++){
+            if(groupPosts.get(i).getContentId().equals(postId)){
+                post=groupPosts.get(i);
+                break;
+            }
+        }
+        
+        boolean removePostAccess=false;
+        if(post==null){
+            JOptionPane.showMessageDialog(null, "Post doesnt exist");
+            return;
+        }else{
+            if(wantedGroup.getAdminIds().contains(userId) || post.getUserId().equals(userId)){
+                removePostAccess=true;
+            }
+        }
+        
+        if(removePostAccess){
+            if(post!=null){
+                groupPosts.remove(post);
+                JOptionPane.showMessageDialog(null, "Post removed!");
+            }
+        }
+        
+        Group.saveGroups(groups);
+    }
 }
