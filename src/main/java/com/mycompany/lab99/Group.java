@@ -1,6 +1,9 @@
 package com.mycompany.lab99;
 
 import static com.mycompany.lab99.Content.getFormatter;
+import static com.mycompany.lab99.NotificationToGroupPosted.createGroupPostNotification;
+import static com.mycompany.lab99.NotifyAddedToGroup.notifyGroupAddition;
+import static com.mycompany.lab99.NotifyAddedToGroup.removeGroupNotification;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -277,6 +280,7 @@ public class Group {
         }
         
         wantedGroup.getUserIds().add(userId);
+        notifyGroupAddition( groupId, userId);
         JOptionPane.showMessageDialog(null, "User added to the group.");
 
         Group.saveGroups(groups);
@@ -352,6 +356,13 @@ public class Group {
         
         Post post=new Post(userId,content,timeStamp,imageSource);
         wantedGroup.getPosts().add(post);
+        
+        ArrayList<String>members=wantedGroup.getUserIds();
+        
+        ////////////////////////
+        createGroupPostNotification( groupId,  userId,content,members);
+        /////////////////////////
+        
         JOptionPane.showMessageDialog(null, "Post added!");
         Group.saveGroups(groups);
         
