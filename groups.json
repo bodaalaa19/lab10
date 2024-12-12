@@ -4,51 +4,21 @@
         "groupId": "group1645596773",
         "groupCreator": "j",
         "groupPhoto": "C:\\Users\\Victus\\Downloads\\downloaded images\\emoticon.png",
-        "posts": [
-            {
-                "imagesrc": "C:\\Users\\Victus\\Downloads\\downloaded images\\emoticon.png",
-                "postId": "post1822775443",
-                "userId": "best",
-                "content": "bestpost1ingroup",
-                "timestamp": "11-12-2024 17:15"
-            },
-            {
-                "imagesrc": "C:\\Users\\Victus\\Downloads\\downloaded images\\emoticon.png",
-                "postId": "post1953790154",
-                "userId": "best",
-                "content": "bestPost22222222",
-                "timestamp": "11-12-2024 17:15"
-            },
-            {
-                "imagesrc": "C:\\Users\\Victus\\Downloads\\downloaded images\\cow.png",
-                "postId": "post1992634090",
-                "userId": "best",
-                "content": "abdoo is here",
-                "timestamp": "12-12-2024 18:38"
-            },
-            {
-                "imagesrc": "null",
-                "postId": "post776019357",
-                "userId": "best",
-                "content": "add",
-                "timestamp": "12-12-2024 18:38"
-            }
+        "posts": [{
+            "imagesrc": "C:\\Users\\Victus\\Downloads\\downloaded images\\emoticon.png",
+            "postId": "post1953790154",
+            "userId": "best",
+            "content": "bestPost22222222",
+            "timestamp": "11-12-2024 17:15"
+        }],
+        "admins": [
+            {"adminId": "j"},
+            {"adminId": "best"}
         ],
-        "admins": [{"adminId": "j"}],
         "users": [
             {"userId": "j"},
-            {"userId": "oo"},
             {"userId": "best"}
         ]
-    },
-    {
-        "groupName": "bodaFirstGroup",
-        "groupId": "group696131873",
-        "groupCreator": "best",
-        "groupPhoto": "C:\\Users\\Victus\\Downloads\\downloaded images\\emoticon.png",
-        "posts": [],
-        "admins": [{"adminId": "best"}],
-        "users": [{"userId": "best"}]
     },
     {
         "groupName": "aaaa",
@@ -67,6 +37,15 @@
         "groupId": "group965843722",
         "groupCreator": "best",
         "groupPhoto": "C:\\Users\\Victus\\Downloads\\downloaded images\\report.png",
+        "posts": [],
+        "admins": [{"adminId": "best"}],
+        "users": [{"userId": "best"}]
+    },
+    {
+        "groupName": "newG",
+        "groupId": "group534161621",
+        "groupCreator": "best",
+        "groupPhoto": "C:\\Users\\Victus\\Downloads\\downloaded images\\penguin.png",
         "posts": [],
         "admins": [{"adminId": "best"}],
         "users": [{"userId": "best"}]

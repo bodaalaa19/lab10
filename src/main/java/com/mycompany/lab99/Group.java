@@ -314,7 +314,9 @@ public class Group {
             removeMemberAccess=true;
         }
         
-        
+         if (wantedGroup.getAdminIds().contains(userId)) {
+        wantedGroup.getAdminIds().remove(userId);
+    }
         if(removeMemberAccess){
             if(wantedGroup.getUserIds().contains(userId)){
                 if(userId.equals(wantedGroup.getGroupCreator())){
