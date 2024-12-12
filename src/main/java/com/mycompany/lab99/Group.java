@@ -1,6 +1,9 @@
 package com.mycompany.lab99;
 
 import static com.mycompany.lab99.Content.getFormatter;
+import static com.mycompany.lab99.NotificationToGroupPosted.createGroupPostNotification;
+import static com.mycompany.lab99.NotifyAddedToGroup.notifyGroupAddition;
+import static com.mycompany.lab99.NotifyAddedToGroup.removeGroupNotification;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -277,6 +280,7 @@ public class Group {
         }
         
         wantedGroup.getUserIds().add(userId);
+        notifyGroupAddition( groupId, userId);
         JOptionPane.showMessageDialog(null, "User added to the group.");
 
         Group.saveGroups(groups);
@@ -311,6 +315,7 @@ public class Group {
                     JOptionPane.showMessageDialog(null, "Cannot remove Group Creator!");
                     return;
                 }else{
+                  //  removeGroupNotification( groupId,  userId);
                     wantedGroup.getUserIds().remove(userId);
                     JOptionPane.showMessageDialog(null, "User removed from the group!");
                     Group.saveGroups(groups);
@@ -351,6 +356,13 @@ public class Group {
         
         Post post=new Post(userId,content,timeStamp,imageSource);
         wantedGroup.getPosts().add(post);
+        
+        ArrayList<String>members=wantedGroup.getUserIds();
+        
+        ////////////////////////
+        createGroupPostNotification( groupId,  userId,content,members);
+        /////////////////////////
+        
         JOptionPane.showMessageDialog(null, "Post added!");
         Group.saveGroups(groups);
         
@@ -633,5 +645,17 @@ public class Group {
     // Save updated group information
     saveGroups(groups);
 }
-
+ 
+    public static ArrayList<String> getAllGroupsForUser(String userId){
+        ArrayList<String> groupNames=new ArrayList<>();
+        ArrayList<Group> groups = loadGroups();
+        
+        for(int i=0;i<groups.size();i++){
+            if(groups.get(i).getUserIds().contains(userId)){
+                groupNames.add(groups.get(i).getGroupName());
+            }
+        }
+        
+        return groupNames;
+    }
 }
