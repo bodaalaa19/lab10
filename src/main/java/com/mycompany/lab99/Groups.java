@@ -4,6 +4,7 @@
  */
 package com.mycompany.lab99;
 
+import static com.mycompany.lab99.Group.getAllGroupsForUser;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 
@@ -18,6 +19,12 @@ public class Groups extends javax.swing.JFrame {
      */
     public Groups() {
         initComponents();
+                        DefaultListModel<String> listModel = new DefaultListModel<>();
+ArrayList<String> groups=getAllGroupsForUser(LoginScreen.activeUser.getUserId());
+        for (String group : groups) {
+            listModel.addElement(group);
+        }
+        MyGroupsList.setModel(listModel);
     }
 
     /**
@@ -270,7 +277,7 @@ ArrayList<Group> groups=Group.loadGroups();
     private void ViewMyGroupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewMyGroupActionPerformed
         // TODO add your handling code here:
         Group l=null;
-String s=GroupSearchList.getSelectedValue();
+String s=MyGroupsList.getSelectedValue();
 ArrayList<Group> groups=Group.loadGroups();
         for (Group group : groups) {
             if(s.equals(group.getGroupName())){
