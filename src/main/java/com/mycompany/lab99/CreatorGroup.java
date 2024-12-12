@@ -377,6 +377,7 @@ ArrayList<String>a=group.getUserIds();
             memberListModel.addElement(member);
         }
         GroupMembersList.setModel(memberListModel);
+    this.repaint();
 
     }//GEN-LAST:event_refresshBtnActionPerformed
 
