@@ -285,7 +285,12 @@ ArrayList<Group> groups=Group.loadGroups();
             break;
             }
         }
-        if(Group.isCreator(l.getGroupId(), LoginScreen.activeUser.getUserId())){}
+        if(Group.isCreator(l.getGroupId(), LoginScreen.activeUser.getUserId())){
+        CreatorGroup creatorGroup=new CreatorGroup(l);
+        creatorGroup.setVisible(true);
+                this.setVisible(false);
+
+        }
         else if(Group.isAdmin(l.getGroupId(), LoginScreen.activeUser.getUserId())){
         AdminGroup adminGroup=new AdminGroup(l);
         adminGroup.setVisible(true);

@@ -4,22 +4,13 @@
         "groupId": "group1645596773",
         "groupCreator": "j",
         "groupPhoto": "C:\\Users\\Victus\\Downloads\\downloaded images\\emoticon.png",
-        "posts": [
-            {
-                "imagesrc": "C:\\Users\\Victus\\Downloads\\downloaded images\\emoticon.png",
-                "postId": "post1953790154",
-                "userId": "best",
-                "content": "bestPost22222222",
-                "timestamp": "11-12-2024 17:15"
-            },
-            {
-                "imagesrc": "C:\\Users\\Victus\\Downloads\\downloaded images\\emoticon.png",
-                "postId": "post1647217277",
-                "userId": "best",
-                "content": "bbbbbb",
-                "timestamp": "12-12-2024 20:33"
-            }
-        ],
+        "posts": [{
+            "imagesrc": "C:\\Users\\Victus\\Downloads\\downloaded images\\emoticon.png",
+            "postId": "post1953790154",
+            "userId": "best",
+            "content": "bestPost22222222",
+            "timestamp": "11-12-2024 17:15"
+        }],
         "admins": [
             {"adminId": "j"},
             {"adminId": "best"}

@@ -3,9 +3,6 @@
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
-    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[661, 436]"/>
-    </Property>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -44,8 +41,8 @@
                                       <Component id="jScrollPane3" min="-2" pref="135" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="DeletePostBtn" max="32767" attributes="0"/>
-                                          <Component id="ViewPostBtn" max="32767" attributes="0"/>
+                                          <Component id="DeletePostBtn" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="ViewPostBtn" alignment="0" max="32767" attributes="0"/>
                                           <Component id="EditPostBtn" alignment="0" max="32767" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
@@ -66,14 +63,16 @@
                                       <Component id="jScrollPane4" min="-2" pref="135" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="ViewProf" max="32767" attributes="0"/>
-                                          <Component id="RemoveMemberBtn" max="32767" attributes="0"/>
+                                          <Component id="ViewProf" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="RemoveMemberBtn" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="PromoteMember" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="DemoteMember" alignment="0" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace pref="85" max="32767" attributes="0"/>
+                      <EmptySpace pref="79" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="backBtn" min="-2" max="-2" attributes="0"/>
@@ -148,6 +147,10 @@
                               <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
+                              <Component id="DemoteMember" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="PromoteMember" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="RemoveMemberBtn" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="ViewProf" min="-2" max="-2" attributes="0"/>
@@ -161,6 +164,11 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
+    <Component class="javax.swing.JLabel" name="jLabel1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Group posts:"/>
+      </Properties>
+    </Component>
     <Component class="javax.swing.JButton" name="AddPostBtn">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -172,6 +180,8 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AddPostBtnActionPerformed"/>
       </Events>
     </Component>
+    <Component class="javax.swing.JLabel" name="GroupPhotoLabel">
+    </Component>
     <Component class="javax.swing.JButton" name="LeaveGroup">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -181,6 +191,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="LeaveGroupActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="ViewPostBtn">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="View Post"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ViewPostBtnActionPerformed"/>
       </Events>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane4">
@@ -211,17 +229,57 @@
         </Component>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JButton" name="backBtn">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="back"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="backBtnActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="RemoveMemberBtn">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="remove member"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RemoveMemberBtnActionPerformed"/>
+      </Events>
+    </Component>
     <Component class="javax.swing.JLabel" name="GroupName">
+    </Component>
+    <Component class="javax.swing.JButton" name="refresshBtn">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="refresh"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="refresshBtnActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
         <Property name="text" type="java.lang.String" value="Group name:"/>
       </Properties>
     </Component>
+    <Component class="javax.swing.JButton" name="DeletePostBtn">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Delete Post"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DeletePostBtnActionPerformed"/>
+      </Events>
+    </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
         <Property name="text" type="java.lang.String" value="group member:"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="EditPostBtn">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Edit post"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EditPostBtnActionPerformed"/>
+      </Events>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane3">
       <AuxValues>
@@ -259,59 +317,20 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ViewProfActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel1">
+    <Component class="javax.swing.JButton" name="PromoteMember">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Group posts:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="GroupPhotoLabel">
-    </Component>
-    <Component class="javax.swing.JButton" name="ViewPostBtn">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="View Post"/>
+        <Property name="text" type="java.lang.String" value="Promote member"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ViewPostBtnActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PromoteMemberActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="backBtn">
+    <Component class="javax.swing.JButton" name="DemoteMember">
       <Properties>
-        <Property name="text" type="java.lang.String" value="back"/>
+        <Property name="text" type="java.lang.String" value="Demote admin"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="backBtnActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="RemoveMemberBtn">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="remove member"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RemoveMemberBtnActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="refresshBtn">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="refresh"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="refresshBtnActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="DeletePostBtn">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Delete Post"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DeletePostBtnActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="EditPostBtn">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Edit post"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="EditPostBtnActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DemoteMemberActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

@@ -4,8 +4,10 @@
  */
 package com.mycompany.lab99;
 
+import static com.mycompany.lab99.Group.demoteFromAdmin;
 import static com.mycompany.lab99.Group.editGroupPost;
 import static com.mycompany.lab99.Group.leaveGroup;
+import static com.mycompany.lab99.Group.promoteToAdmin;
 import static com.mycompany.lab99.Group.removePostFromGroup;
 import static com.mycompany.lab99.Group.removeUserFromGroup;
 import java.awt.Image;
@@ -18,18 +20,19 @@ import javax.swing.JOptionPane;
  *
  * @author Victus
  */
-public class AdminGroup extends javax.swing.JFrame {
+public class CreatorGroup extends javax.swing.JFrame {
 
     /**
-     * Creates new form AdminGroup
+     * Creates new form CreatorGroup
      */
-    Group group;
-    public AdminGroup(Group g) {
+        Group group;
+
+    public CreatorGroup(Group g) {
         initComponents();
         group=g;
         updateData();
     }
-    public void updateData(){
+  public void updateData(){
         GroupName.setText(group.getGroupName());
         String path;
         path=group.getPhotoPath();
@@ -50,8 +53,7 @@ ArrayList<String>a=group.getUserIds();
          }
          GroupMembersList.setModel(listModel2);
     }
-    private AdminGroup(){}
-
+  private CreatorGroup(){}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -61,27 +63,30 @@ ArrayList<String>a=group.getUserIds();
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
         AddPostBtn = new javax.swing.JButton();
+        GroupPhotoLabel = new javax.swing.JLabel();
         LeaveGroup = new javax.swing.JButton();
+        ViewPostBtn = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         GroupMembersList = new javax.swing.JList<>();
+        backBtn = new javax.swing.JButton();
+        RemoveMemberBtn = new javax.swing.JButton();
         GroupName = new javax.swing.JLabel();
+        refresshBtn = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        DeletePostBtn = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        EditPostBtn = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         GroupPostsList = new javax.swing.JList<>();
         ViewProf = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        GroupPhotoLabel = new javax.swing.JLabel();
-        ViewPostBtn = new javax.swing.JButton();
-        backBtn = new javax.swing.JButton();
-        RemoveMemberBtn = new javax.swing.JButton();
-        refresshBtn = new javax.swing.JButton();
-        DeletePostBtn = new javax.swing.JButton();
-        EditPostBtn = new javax.swing.JButton();
+        PromoteMember = new javax.swing.JButton();
+        DemoteMember = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(661, 436));
+
+        jLabel1.setText("Group posts:");
 
         AddPostBtn.setBackground(new java.awt.Color(255, 0, 204));
         AddPostBtn.setText("Add post");
@@ -99,6 +104,13 @@ ArrayList<String>a=group.getUserIds();
             }
         });
 
+        ViewPostBtn.setText("View Post");
+        ViewPostBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ViewPostBtnActionPerformed(evt);
+            }
+        });
+
         GroupMembersList.setBackground(new java.awt.Color(255, 51, 204));
         GroupMembersList.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -106,34 +118,6 @@ ArrayList<String>a=group.getUserIds();
             public String getElementAt(int i) { return strings[i]; }
         });
         jScrollPane4.setViewportView(GroupMembersList);
-
-        jLabel2.setText("Group name:");
-
-        jLabel3.setText("group member:");
-
-        GroupPostsList.setBackground(new java.awt.Color(255, 51, 204));
-        GroupPostsList.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane3.setViewportView(GroupPostsList);
-
-        ViewProf.setText("view profile");
-        ViewProf.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ViewProfActionPerformed(evt);
-            }
-        });
-
-        jLabel1.setText("Group posts:");
-
-        ViewPostBtn.setText("View Post");
-        ViewPostBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ViewPostBtnActionPerformed(evt);
-            }
-        });
 
         backBtn.setText("back");
         backBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -156,6 +140,8 @@ ArrayList<String>a=group.getUserIds();
             }
         });
 
+        jLabel2.setText("Group name:");
+
         DeletePostBtn.setText("Delete Post");
         DeletePostBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -163,10 +149,41 @@ ArrayList<String>a=group.getUserIds();
             }
         });
 
+        jLabel3.setText("group member:");
+
         EditPostBtn.setText("Edit post");
         EditPostBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 EditPostBtnActionPerformed(evt);
+            }
+        });
+
+        GroupPostsList.setBackground(new java.awt.Color(255, 51, 204));
+        GroupPostsList.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane3.setViewportView(GroupPostsList);
+
+        ViewProf.setText("view profile");
+        ViewProf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ViewProfActionPerformed(evt);
+            }
+        });
+
+        PromoteMember.setText("Promote member");
+        PromoteMember.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PromoteMemberActionPerformed(evt);
+            }
+        });
+
+        DemoteMember.setText("Demote admin");
+        DemoteMember.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DemoteMemberActionPerformed(evt);
             }
         });
 
@@ -209,8 +226,10 @@ ArrayList<String>a=group.getUserIds();
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(ViewProf, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(RemoveMemberBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
-                        .addContainerGap(85, Short.MAX_VALUE))
+                                            .addComponent(RemoveMemberBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(PromoteMember, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(DemoteMember, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                        .addContainerGap(79, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(backBtn)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -266,6 +285,10 @@ ArrayList<String>a=group.getUserIds();
                                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(45, 45, 45))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(DemoteMember)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(PromoteMember)
+                                .addGap(18, 18, 18)
                                 .addComponent(RemoveMemberBtn)
                                 .addGap(18, 18, 18)
                                 .addComponent(ViewProf)
@@ -290,21 +313,6 @@ ArrayList<String>a=group.getUserIds();
         this.setVisible(false);
     }//GEN-LAST:event_LeaveGroupActionPerformed
 
-    private void ViewProfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewProfActionPerformed
-        // TODO add your handling code here:
-        User l=null;
-        String name=GroupMembersList.getSelectedValue();
-        ArrayList<User> users=User.loadUsers();
-        for (User user : users) {
-            if(name.equals(user.getUsername())){
-                l=user;
-                break;
-            }
-        }
-        viewProfile p=new viewProfile(l);
-        p.setVisible(true);
-    }//GEN-LAST:event_ViewProfActionPerformed
-
     private void ViewPostBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewPostBtnActionPerformed
         // TODO add your handling code here:
         ArrayList<Post> posts=group.getPosts();
@@ -328,31 +336,31 @@ ArrayList<String>a=group.getUserIds();
 
     private void refresshBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refresshBtnActionPerformed
         // TODO add your handling code here:
-         GroupName.setText(group.getGroupName());
+        GroupName.setText(group.getGroupName());
 
-    // Update the group photo
-    String path = group.getPhotoPath();
-    ImageIcon icon = new ImageIcon(path);
-    Image img = icon.getImage();
-    Image scaledImg = img.getScaledInstance(230, 88, Image.SCALE_DEFAULT);
-    GroupPhotoLabel.setIcon(new ImageIcon(scaledImg));
+        // Update the group photo
+        String path = group.getPhotoPath();
+        ImageIcon icon = new ImageIcon(path);
+        Image img = icon.getImage();
+        Image scaledImg = img.getScaledInstance(230, 88, Image.SCALE_DEFAULT);
+        GroupPhotoLabel.setIcon(new ImageIcon(scaledImg));
 
-    // Update the list of group posts
-    ArrayList<Post> posts = group.getPosts();
-    DefaultListModel<String> postListModel = new DefaultListModel<>();
-    for (Post post : posts) {
-        postListModel.addElement(post.getContent());
-    }
-    GroupPostsList.setModel(postListModel);
+        // Update the list of group posts
+        ArrayList<Post> posts = group.getPosts();
+        DefaultListModel<String> postListModel = new DefaultListModel<>();
+        for (Post post : posts) {
+            postListModel.addElement(post.getContent());
+        }
+        GroupPostsList.setModel(postListModel);
 
-    // Update the list of group members
-    ArrayList<String> members = group.getUserIds();
-    DefaultListModel<String> memberListModel = new DefaultListModel<>();
-    for (String member : members) {
-        memberListModel.addElement(member);
-    }
-    GroupMembersList.setModel(memberListModel);
- 
+        // Update the list of group members
+        ArrayList<String> members = group.getUserIds();
+        DefaultListModel<String> memberListModel = new DefaultListModel<>();
+        for (String member : members) {
+            memberListModel.addElement(member);
+        }
+        GroupMembersList.setModel(memberListModel);
+
     }//GEN-LAST:event_refresshBtnActionPerformed
 
     private void DeletePostBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeletePostBtnActionPerformed
@@ -362,23 +370,49 @@ ArrayList<String>a=group.getUserIds();
         String id=null;
         for (Post post : p) {
             if(s.equals(post.getContent()))
-                id=post.getContentId();
+            id=post.getContentId();
         }
         removePostFromGroup(group.getGroupId(),LoginScreen.activeUser.getUserId(),id);
     }//GEN-LAST:event_DeletePostBtnActionPerformed
 
     private void EditPostBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditPostBtnActionPerformed
         // TODO add your handling code here:
-         String s=GroupPostsList.getSelectedValue();
+        String s=GroupPostsList.getSelectedValue();
         ArrayList<Post> p=group.getPosts();
         String id=null;
         for (Post post : p) {
             if(s.equals(post.getContent()))
-                id=post.getContentId();
+            id=post.getContentId();
         }
         String s2=JOptionPane.showInputDialog("enter the new content");
         editGroupPost(group.getGroupId(),LoginScreen.activeUser.getUserId(),id, s2);
     }//GEN-LAST:event_EditPostBtnActionPerformed
+
+    private void ViewProfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewProfActionPerformed
+        // TODO add your handling code here:
+        User l=null;
+        String name=GroupMembersList.getSelectedValue();
+        ArrayList<User> users=User.loadUsers();
+        for (User user : users) {
+            if(name.equals(user.getUsername())){
+                l=user;
+                break;
+            }
+        }
+        viewProfile p=new viewProfile(l);
+        p.setVisible(true);
+    }//GEN-LAST:event_ViewProfActionPerformed
+
+    private void PromoteMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PromoteMemberActionPerformed
+        // TODO add your handling code here:
+        promoteToAdmin(group.getGroupId(),LoginScreen.activeUser.getUserId(),GroupMembersList.getSelectedValue());
+        updateData();
+    }//GEN-LAST:event_PromoteMemberActionPerformed
+
+    private void DemoteMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DemoteMemberActionPerformed
+        // TODO add your handling code here:
+        demoteFromAdmin(group.getGroupId(),LoginScreen.activeUser.getUserId(),GroupMembersList.getSelectedValue());
+    }//GEN-LAST:event_DemoteMemberActionPerformed
 
     /**
      * @param args the command line arguments
@@ -397,20 +431,20 @@ ArrayList<String>a=group.getUserIds();
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AdminGroup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CreatorGroup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AdminGroup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CreatorGroup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AdminGroup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CreatorGroup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AdminGroup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CreatorGroup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AdminGroup().setVisible(true);
+                new CreatorGroup().setVisible(true);
             }
         });
     }
@@ -418,12 +452,14 @@ ArrayList<String>a=group.getUserIds();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddPostBtn;
     private javax.swing.JButton DeletePostBtn;
+    private javax.swing.JButton DemoteMember;
     private javax.swing.JButton EditPostBtn;
     private javax.swing.JList<String> GroupMembersList;
     private javax.swing.JLabel GroupName;
     private javax.swing.JLabel GroupPhotoLabel;
     private javax.swing.JList<String> GroupPostsList;
     private javax.swing.JButton LeaveGroup;
+    private javax.swing.JButton PromoteMember;
     private javax.swing.JButton RemoveMemberBtn;
     private javax.swing.JButton ViewPostBtn;
     private javax.swing.JButton ViewProf;
