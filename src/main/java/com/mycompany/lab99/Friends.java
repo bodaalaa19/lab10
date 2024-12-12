@@ -6,6 +6,7 @@
 package com.mycompany.lab99;
 
 import static com.mycompany.lab99.FriendRequest.loadRequests;
+import static com.mycompany.lab99.RequestNotifications.removeRequestNotification;
 import static com.mycompany.lab99.User.loadUsers;
 import java.io.File;
 import java.io.FileReader;
@@ -76,6 +77,7 @@ public class Friends {
                 friendship2.put("user2", senderId);
                 friendsList.add(friendship1);
                 friendsList.add(friendship2);
+                removeRequestNotification(senderId, receiverId);
                 requests.remove(i);
                 requestFound = true;
                 break;
@@ -96,6 +98,7 @@ public class Friends {
         for (int i = 0; i < requests.size(); i++) {
             JSONObject request = requests.get(i);
             if (request.getString("sender").equals(senderId) && request.getString("receiver").equals(receiverId)) {
+                   removeRequestNotification(senderId, receiverId);
                 requests.remove(i);
                 requestFound = true;
                 break;

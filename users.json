@@ -78,7 +78,7 @@
         "email": "oo"
     },
     {
-        "Status": "offline",
+        "Status": "online",
         "hashedPassword": "mvKSHT/Vf+iGyQItH8wFXVOnnkAy+mE345dYOIThpd4=",
         "profile": {
             "profilePhoto": "ghvh",
@@ -208,7 +208,7 @@
         "email": "2"
     },
     {
-        "Status": "offline",
+        "Status": "online",
         "hashedPassword": "V15QDdtSnMLlsU3W5/6ziai24NfCsWK2vzGDHGTSNZI=",
         "profile": {
             "profilePhoto": "C:\\Users\\Victus\\Downloads\\downloaded images\\duck.png",
@@ -271,5 +271,18 @@
         "userName": "testtest",
         "userId": "testtest",
         "email": "testtest"
+    },
+    {
+        "Status": "online",
+        "hashedPassword": "qx5r4gAKfJw9OQKCdJ9TG7z2o3fEGl/gJhSB4ZEdj84=",
+        "profile": {
+            "profilePhoto": "ghvh",
+            "coverPhoto": "hhh",
+            "bio": "hfc"
+        },
+        "dateOfBirth": "0026-05-12",
+        "userName": "soso",
+        "userId": "8808",
+        "email": "momo"
     }
 ]

@@ -10,8 +10,13 @@ import static com.mycompany.lab99.Friends.acceptRequest;
 import static com.mycompany.lab99.Friends.declineRequest;
 import static com.mycompany.lab99.Friends.removeFriendship;
 import static com.mycompany.lab99.Friends.viewRequestSenders;
+import static com.mycompany.lab99.Group.addToGroup;
+import static com.mycompany.lab99.Group.removeUserFromGroup;
+import static com.mycompany.lab99.NotifyAddedToGroup.getUserGroupNotifications;
 import static com.mycompany.lab99.Post.loadPosts;
 import static com.mycompany.lab99.Post.savePosts;
+import static com.mycompany.lab99.RequestNotifications.UserRequestsNotifications;
+import static com.mycompany.lab99.RequestNotifications.removeRequestNotification;
 import static com.mycompany.lab99.Story.deleteStories;
 import static com.mycompany.lab99.Story.loadStories;
 import static com.mycompany.lab99.Story.saveStories;
@@ -40,6 +45,7 @@ public class Lab99 {
         group1Admins.add("admin1");
         group1Admins.add("admin2");
         
+
         ArrayList<String> group1Users=new ArrayList<>();
         group1Users.add("user1");
         group1Users.add("user2");
@@ -119,5 +125,6 @@ public class Lab99 {
             
             
         }
-
 }
+
+
