@@ -4,8 +4,7 @@
  */
 package com.mycompany.lab99;
 
-import static com.mycompany.lab99.RequestNotifications.notifyRequest;
-import static com.mycompany.lab99.RequestNotifications.removeRequestNotification;
+
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -105,7 +104,6 @@ public static boolean sendRequest(String senderId, String receiverId) {
 
     // Add the new request and save to the file
     requests.add(newRequest);
-    notifyRequest( senderId,  receiverId);
     saveRequests(requests);
            JOptionPane.showMessageDialog(null, "request sent", "request", JOptionPane.INFORMATION_MESSAGE);
 
@@ -120,7 +118,6 @@ public static boolean deleteRequest(String senderId, String receiverId) {
     for (int i = 0; i < requests.size(); i++) {
         JSONObject request = requests.get(i);
         if (request.getString("sender").equals(senderId) && request.getString("receiver").equals(receiverId)) {
-            removeRequestNotification(senderId, receiverId);
             requests.remove(i); 
 
             requestFound = true;
