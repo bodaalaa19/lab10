@@ -15,8 +15,18 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class RequestNotifications extends Notification{
-
+ private String senderId; // Add a field for sender ID
     private static final String NOTIFICATIONS_FILE = "requestsNotifications.json";
+
+      public RequestNotifications(String senderId, String userId, String message) {
+        super(userId, message); // Call parent constructor to set receiver ID and message
+        this.senderId = senderId; // Initialize sender ID
+    }
+
+    // Getter for senderId
+    public String getSenderId() {
+        return senderId;
+    }
 
     public static void saveRequests(ArrayList<JSONObject> requests) {
         JSONArray requestsArray = new JSONArray(requests);
@@ -74,19 +84,23 @@ public class RequestNotifications extends Notification{
     return true;
 }
 
-//this function returns all requests notifications
-  public static ArrayList<String> UserRequestsNotifications(String userId) {
+//this function returns all request notifications as Notification objects
+public static ArrayList<RequestNotifications> UserRequestsNotifications(String userId) {
     ArrayList<JSONObject> allRequests = loadRequests();
-    ArrayList<String> userMessages = new ArrayList<>();
+    ArrayList<RequestNotifications> userNotifications = new ArrayList<>();
 
     for (JSONObject request : allRequests) {
         if (request.getString("receiver").equals(userId)) {
-            userMessages.add(request.getString("message")); // Add the message to the list
+            String senderId = request.getString("sender");
+            String message = request.getString("message");
+            userNotifications.add(new RequestNotifications(senderId, userId, message)); // Use new constructor
         }
     }
 
-    return userMessages; // Return only the messages
+    return userNotifications; // Return list of RequestNotifications objects
 }
+
+
 
 
    public static boolean removeRequestNotification(String senderId, String receiverId) {
@@ -116,7 +130,5 @@ public class RequestNotifications extends Notification{
 }
 
 
-    public RequestNotifications(String userId, String message) {
-        super(userId, message);
-    }
+   
 }

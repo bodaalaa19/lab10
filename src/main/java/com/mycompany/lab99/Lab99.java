@@ -10,6 +10,9 @@ import static com.mycompany.lab99.Friends.acceptRequest;
 import static com.mycompany.lab99.Friends.declineRequest;
 import static com.mycompany.lab99.Friends.removeFriendship;
 import static com.mycompany.lab99.Friends.viewRequestSenders;
+import static com.mycompany.lab99.Group.addToGroup;
+import static com.mycompany.lab99.Group.removeUserFromGroup;
+import static com.mycompany.lab99.NotifyAddedToGroup.getUserGroupNotifications;
 import static com.mycompany.lab99.Post.loadPosts;
 import static com.mycompany.lab99.Post.savePosts;
 import static com.mycompany.lab99.RequestNotifications.UserRequestsNotifications;
@@ -38,7 +41,9 @@ import org.json.JSONObject;
 public class Lab99 {
 
     public static void main(String[] args) throws ParseException, NoSuchAlgorithmException {
-removeRequestNotification( "ahmed ali", "best");
+        
+            
+        }
         }
 
-}
+
