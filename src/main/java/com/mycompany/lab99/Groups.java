@@ -5,6 +5,7 @@
 package com.mycompany.lab99;
 
 import java.util.ArrayList;
+import javax.swing.DefaultListModel;
 
 /**
  *
@@ -171,6 +172,12 @@ ArrayList<Group> groups=Group.loadGroups();
 
     private void GroupSearchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GroupSearchBtnActionPerformed
         // TODO add your handling code here:
+        ArrayList<Group> g=Group.searchForGroup(GroupSearch.getText());
+                DefaultListModel<String> listModel2 = new DefaultListModel<>();
+        for (Group group : g) {
+            listModel2.addElement(group.getGroupName());
+        }
+        GroupSearchList.setModel(listModel2);
     }//GEN-LAST:event_GroupSearchBtnActionPerformed
 
     /**
