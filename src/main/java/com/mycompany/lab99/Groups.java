@@ -168,6 +168,7 @@ ArrayList<Group> groups=Group.loadGroups();
         }
         ViewGroup viewGroup=new ViewGroup(l);
         viewGroup.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_ViewGroupActionPerformed
 
     private void GroupSearchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GroupSearchBtnActionPerformed
