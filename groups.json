@@ -21,15 +21,6 @@
         ]
     },
     {
-        "groupName": "bodaFirstGroup",
-        "groupId": "group696131873",
-        "groupCreator": "best",
-        "groupPhoto": "C:\\Users\\Victus\\Downloads\\downloaded images\\emoticon.png",
-        "posts": [],
-        "admins": [{"adminId": "best"}],
-        "users": [{"userId": "best"}]
-    },
-    {
         "groupName": "aaaa",
         "groupId": "group1394628288",
         "groupCreator": "best",
@@ -46,6 +37,15 @@
         "groupId": "group965843722",
         "groupCreator": "best",
         "groupPhoto": "C:\\Users\\Victus\\Downloads\\downloaded images\\report.png",
+        "posts": [],
+        "admins": [{"adminId": "best"}],
+        "users": [{"userId": "best"}]
+    },
+    {
+        "groupName": "newG",
+        "groupId": "group534161621",
+        "groupCreator": "best",
+        "groupPhoto": "C:\\Users\\Victus\\Downloads\\downloaded images\\penguin.png",
         "posts": [],
         "admins": [{"adminId": "best"}],
         "users": [{"userId": "best"}]

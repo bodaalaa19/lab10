@@ -4,6 +4,7 @@
  */
 package com.mycompany.lab99;
 
+import static com.mycompany.lab99.Group.deleteGroup;
 import static com.mycompany.lab99.Group.demoteFromAdmin;
 import static com.mycompany.lab99.Group.editGroupPost;
 import static com.mycompany.lab99.Group.leaveGroup;
@@ -83,6 +84,7 @@ ArrayList<String>a=group.getUserIds();
         ViewProf = new javax.swing.JButton();
         PromoteMember = new javax.swing.JButton();
         DemoteMember = new javax.swing.JButton();
+        DeleteGroupBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -187,6 +189,14 @@ ArrayList<String>a=group.getUserIds();
             }
         });
 
+        DeleteGroupBtn.setBackground(new java.awt.Color(153, 255, 51));
+        DeleteGroupBtn.setText("DELETE GROUP");
+        DeleteGroupBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeleteGroupBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -207,14 +217,19 @@ ArrayList<String>a=group.getUserIds();
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(DeletePostBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(ViewPostBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(EditPostBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                        .addGap(23, 23, 23)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(AddPostBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE)
-                                            .addComponent(LeaveGroup, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                    .addComponent(DeletePostBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                    .addComponent(ViewPostBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                    .addComponent(EditPostBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                                .addGap(23, 23, 23)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                    .addComponent(AddPostBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE)
+                                                    .addComponent(LeaveGroup, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(65, 65, 65)
+                                                .addComponent(DeleteGroupBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
@@ -262,12 +277,14 @@ ArrayList<String>a=group.getUserIds();
                     .addComponent(jLabel3))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(26, 26, 26)
                                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(79, 79, 79)
+                                .addGap(18, 18, 18)
+                                .addComponent(DeleteGroupBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(EditPostBtn)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -414,6 +431,14 @@ ArrayList<String>a=group.getUserIds();
         demoteFromAdmin(group.getGroupId(),LoginScreen.activeUser.getUserId(),GroupMembersList.getSelectedValue());
     }//GEN-LAST:event_DemoteMemberActionPerformed
 
+    private void DeleteGroupBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteGroupBtnActionPerformed
+        // TODO add your handling code here:
+        deleteGroup(group.getGroupId(),LoginScreen.activeUser.getUserId());
+        Groups g=new Groups();
+        g.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_DeleteGroupBtnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -451,6 +476,7 @@ ArrayList<String>a=group.getUserIds();
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddPostBtn;
+    private javax.swing.JButton DeleteGroupBtn;
     private javax.swing.JButton DeletePostBtn;
     private javax.swing.JButton DemoteMember;
     private javax.swing.JButton EditPostBtn;
