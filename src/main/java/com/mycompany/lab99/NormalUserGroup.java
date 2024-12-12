@@ -72,7 +72,7 @@ private NormalUserGroup(){}
         jLabel3 = new javax.swing.JLabel();
         ViewProf = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel2.setText("Group name:");
 
