@@ -40,7 +40,8 @@
         "posts": [],
         "admins": [{"adminId": "best"}],
         "users": [{"userId": "best"}]
-    }
+    },
+    {
         "groupName": "newG",
         "groupId": "group534161621",
         "groupCreator": "best",
@@ -48,6 +49,5 @@
         "posts": [],
         "admins": [{"adminId": "best"}],
         "users": [{"userId": "best"}]
-
     }
 ]
