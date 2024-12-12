@@ -17,7 +17,8 @@
         ],
         "users": [
             {"userId": "j"},
-            {"userId": "best"}
+            {"userId": "best"},
+            {"userId": "mohamed"}
         ]
     },
     {
@@ -29,7 +30,8 @@
         "admins": [{"adminId": "best"}],
         "users": [
             {"userId": "best"},
-            {"userId": "oo"}
+            {"userId": "oo"},
+            {"userId": "alii"}
         ]
     },
     {
@@ -48,6 +50,9 @@
         "groupPhoto": "C:\\Users\\Victus\\Downloads\\downloaded images\\penguin.png",
         "posts": [],
         "admins": [{"adminId": "best"}],
-        "users": [{"userId": "best"}]
+        "users": [
+            {"userId": "best"},
+            {"userId": "alii"}
+        ]
     }
 ]
