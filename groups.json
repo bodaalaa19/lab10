@@ -1,0 +1,28 @@
+[{
+    "groupName": "group1",
+    "groupId": "group1645596773",
+    "groupCreator": "j",
+    "groupPhoto": "photo1",
+    "posts": [
+        {
+            "imagesrc": "image1",
+            "postId": "post1822775443",
+            "userId": "best",
+            "content": "bestpost1ingroup",
+            "timestamp": "11-12-2024 17:15"
+        },
+        {
+            "imagesrc": "img2",
+            "postId": "post1953790154",
+            "userId": "best",
+            "content": "bestPost2",
+            "timestamp": "11-12-2024 17:15"
+        }
+    ],
+    "admins": [{"adminId": "j"}],
+    "users": [
+        {"userId": "j"},
+        {"userId": "best"},
+        {"userId": "oo"}
+    ]
+}]
