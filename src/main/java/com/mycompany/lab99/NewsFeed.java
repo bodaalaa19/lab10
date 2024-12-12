@@ -469,8 +469,12 @@ ArrayList<Group> g=suggestGroups(LoginScreen.activeUser.getUserId());
 
     private void refresh2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refresh2ActionPerformed
         // TODO add your handling code here:
-        
-
+                DefaultListModel<String> SuggestG = new DefaultListModel<>();
+ArrayList<Group> g=suggestGroups(LoginScreen.activeUser.getUserId());
+        for (Group group : g) {
+            SuggestG.addElement(group.getGroupName());
+        }
+SuggestGroupsList.setModel(SuggestG);
         // Refresh Friend Posts
         DefaultListModel<String> postsModel = new DefaultListModel<>();
         ArrayList<Post> friendPosts = getFriendPosts(LoginScreen.activeUser.getUserId());

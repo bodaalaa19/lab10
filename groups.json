@@ -41,7 +41,10 @@
         "groupPhoto": "C:\\Users\\Victus\\Downloads\\downloaded images\\report.png",
         "posts": [],
         "admins": [{"adminId": "best"}],
-        "users": [{"userId": "best"}]
+        "users": [
+            {"userId": "best"},
+            {"userId": "alii"}
+        ]
     },
     {
         "groupName": "newG",
