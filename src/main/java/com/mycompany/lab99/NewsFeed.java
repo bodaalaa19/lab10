@@ -13,9 +13,11 @@ import static com.mycompany.lab99.Friends.removeFriendship;
 import static com.mycompany.lab99.Friends.search;
 import static com.mycompany.lab99.Friends.suggestFriends;
 import static com.mycompany.lab99.Friends.viewRequestSenders;
+import static com.mycompany.lab99.Group.getGroupIdFromName;
 import static com.mycompany.lab99.Group.getGroupNameFromId;
 import static com.mycompany.lab99.NotificationToGroupPosted.getNotificationsForMember;
 import static com.mycompany.lab99.NotifyAddedToGroup.getUserGroupNotifications;
+import static com.mycompany.lab99.NotifyAddedToGroup.removeGroupNotification;
 import static com.mycompany.lab99.RequestNotifications.UserRequestsNotifications;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
@@ -465,6 +467,14 @@ public class NewsFeed extends javax.swing.JFrame {
         for (RequestNotifications notification : requestnotifications) {
             listModel5.addElement(notification.getMessage());
         }
+        ArrayList<NotificationToGroupPosted> groupPostNotifications = getNotificationsForMember(LoginScreen.activeUser.getUserId());
+        for (NotificationToGroupPosted notification : groupPostNotifications) {
+            listModel5.addElement(notification.getMessage());
+        }
+        ArrayList<NotifyAddedToGroup> addedToGroupNotifications = getUserGroupNotifications(LoginScreen.activeUser.getUserId());
+        for (NotifyAddedToGroup notification : addedToGroupNotifications) {
+            listModel5.addElement(notification.getMessage());
+        }
         notificationsList.setModel(listModel5);
     }//GEN-LAST:event_refresh2ActionPerformed
 
@@ -531,7 +541,6 @@ public class NewsFeed extends javax.swing.JFrame {
             //create a friend request page
             FriendRequestPage friendrequestpage = new FriendRequestPage(message);
             friendrequestpage.setVisible(true);
-            this.setVisible(false);
 
         } else if (message.contains("posted")) {
             //notification is a group post 
@@ -554,17 +563,36 @@ public class NewsFeed extends javax.swing.JFrame {
                     break;
                 }
             }
-            NormalUserGroup normalUserGroup = new NormalUserGroup(l);
-            normalUserGroup.setVisible(true);
-            this.setVisible(false);
-            notificationsList.remove(index);
+
+            //get content
+            String[] temp=message.split(" ");
+            String x=temp[2];
+            
+            
+            //get post
+            Post p = null;
+            ArrayList<Post> posts = l.getPosts();
+            for (int i = 0; i < posts.size(); i++) {
+                if (posts.get(i).getContent().equals(x)) {
+                    p = posts.get(i);
+                   
+                }
+            }
+            
+            //NormalUserGroup normalUserGroup = new NormalUserGroup(l);
+            //normalUserGroup.setVisible(true);
+            ViewPost viewPost = new ViewPost(p);
+            viewPost.setVisible(true);
+            
+           
+            
 
         } else if (message.contains("added")) {
             //member added type notification
 
-            //get group name
-            int i = message.indexOf("group: ");
-            String groupName = message.substring(i + 7, message.length());
+            //get content
+            String[] temp=message.split(" ");
+            String groupName=temp[5];
 
             //get group
             Group l = null;
@@ -578,7 +606,7 @@ public class NewsFeed extends javax.swing.JFrame {
             NormalUserGroup normalUserGroup = new NormalUserGroup(l);
             normalUserGroup.setVisible(true);
             this.setVisible(false);
-            notificationsList.remove(index);
+            removeGroupNotification(getGroupIdFromName(groupName),temp[0]);
         }
     }//GEN-LAST:event_viewNotificationButtonActionPerformed
 

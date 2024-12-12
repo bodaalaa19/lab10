@@ -299,7 +299,7 @@
         "email": "test"
     },
     {
-        "Status": "offline",
+        "Status": "online",
         "hashedPassword": "icTsn2s/EIaxWNjvA9/oFV5vednmZDS4+bNDL+hyDlA=",
         "profile": {
             "profilePhoto": "ghvh",
@@ -312,7 +312,7 @@
         "email": "sh"
     },
     {
-        "Status": "online",
+        "Status": "offline",
         "hashedPassword": "DgfPgwlXcB1DwYPxUV9j5raAJ+Uo9D71KxUnpSDd7II=",
         "profile": {
             "profilePhoto": "ghvh",
@@ -323,5 +323,31 @@
         "userName": "tt",
         "userId": "tt",
         "email": "tt"
+    },
+    {
+        "Status": "offline",
+        "hashedPassword": "rTcO2ZsYmSHn/iYFfECqufT+6DheR2BvUPNIuaVTCvA=",
+        "profile": {
+            "profilePhoto": "ghvh",
+            "coverPhoto": "hhh",
+            "bio": "hfc"
+        },
+        "dateOfBirth": "0016-06-10",
+        "userName": "kk",
+        "userId": "kk",
+        "email": "kk"
+    },
+    {
+        "Status": "online",
+        "hashedPassword": "j6Hd3VNgbOuTPFxqEucU7UHhHTeit7xI6R0VtUFx0DM=",
+        "profile": {
+            "profilePhoto": "ghvh",
+            "coverPhoto": "hhh",
+            "bio": "hfc"
+        },
+        "dateOfBirth": "0015-03-11",
+        "userName": "mm",
+        "userId": "mm",
+        "email": "mm"
     }
 ]

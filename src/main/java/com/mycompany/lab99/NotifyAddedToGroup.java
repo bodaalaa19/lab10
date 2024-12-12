@@ -95,7 +95,7 @@ public class NotifyAddedToGroup extends Notification {
         ArrayList<NotifyAddedToGroup> userNotifications = new ArrayList<>();
 
         for (JSONObject notification : allNotifications) {
-            if (notification.getString("userId").equals(userId)) {
+            if (!notification.getString("userId").equals(userId)) {
                 String groupId = notification.getString("groupId");
                 String message = notification.getString("message");
                 userNotifications.add(new NotifyAddedToGroup(groupId, userId, message)); // Create notification objects

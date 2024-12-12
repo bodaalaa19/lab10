@@ -662,4 +662,16 @@ public class Group {
 
         return groupName;
     }
+    
+    public static String getGroupIdFromName(String n) {
+        String groupId = null;
+        ArrayList<Group> groups = loadGroups();
+        for (int i = 0; i < groups.size(); i++) {
+            if (groups.get(i).getGroupName().equals(n)) {
+                groupId = groups.get(i).getGroupId();
+            }
+        }
+
+        return groupId;
+    }
 }
