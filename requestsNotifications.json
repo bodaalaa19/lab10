@@ -1,11 +1,5 @@
-[
-    {
-        "receiver": "best",
-        "sender": "8808"
-    },
-    {
-        "receiver": "ahmed",
-        "sender": "best",
-        "message": "You received a friend request from best"
-    }
-]
+[{
+    "receiver": "rr",
+    "sender": "11",
+    "message": "You received a friend request from 11"
+}]

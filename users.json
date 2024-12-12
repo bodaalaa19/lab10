@@ -39,7 +39,7 @@
         "email": "abc"
     },
     {
-        "Status": "offline",
+        "Status": "online",
         "hashedPassword": "j0N17GXCxAkqHMIednEkcurg3pmThOgyfElZVxIducI=",
         "profile": {
             "profilePhoto": "C:\\Users\\Victus\\Downloads\\downloaded images\\armchair.png",
@@ -78,7 +78,7 @@
         "email": "oo"
     },
     {
-        "Status": "online",
+        "Status": "offline",
         "hashedPassword": "mvKSHT/Vf+iGyQItH8wFXVOnnkAy+mE345dYOIThpd4=",
         "profile": {
             "profilePhoto": "ghvh",
@@ -208,7 +208,7 @@
         "email": "2"
     },
     {
-        "Status": "online",
+        "Status": "offline",
         "hashedPassword": "V15QDdtSnMLlsU3W5/6ziai24NfCsWK2vzGDHGTSNZI=",
         "profile": {
             "profilePhoto": "C:\\Users\\Victus\\Downloads\\downloaded images\\duck.png",
@@ -234,7 +234,7 @@
         "email": ""
     },
     {
-        "Status": "offline",
+        "Status": "online",
         "hashedPassword": "B3I4NPLqX4LEmngH+SPw9uZq4/CvUNUjM8HQ0bidKw4=",
         "profile": {
             "profilePhoto": "ghvh",
@@ -273,7 +273,7 @@
         "email": "testtest"
     },
     {
-        "Status": "online",
+        "Status": "offline",
         "hashedPassword": "qx5r4gAKfJw9OQKCdJ9TG7z2o3fEGl/gJhSB4ZEdj84=",
         "profile": {
             "profilePhoto": "ghvh",
@@ -284,5 +284,31 @@
         "userName": "soso",
         "userId": "8808",
         "email": "momo"
+    },
+    {
+        "Status": "offline",
+        "hashedPassword": "n4bQgYhMfWWaL+qgxVrQFaO/TxsrC4Is0V1sFbDwCgg=",
+        "profile": {
+            "profilePhoto": "ghvh",
+            "coverPhoto": "hhh",
+            "bio": "hfc"
+        },
+        "dateOfBirth": "0006-07-04",
+        "userName": "test",
+        "userId": "test",
+        "email": "test"
+    },
+    {
+        "Status": "online",
+        "hashedPassword": "icTsn2s/EIaxWNjvA9/oFV5vednmZDS4+bNDL+hyDlA=",
+        "profile": {
+            "profilePhoto": "ghvh",
+            "coverPhoto": "hhh",
+            "bio": "hfc"
+        },
+        "dateOfBirth": "0006-07-05",
+        "userName": "sh",
+        "userId": "sh",
+        "email": "sh"
     }
 ]

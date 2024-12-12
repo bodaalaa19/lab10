@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.mycompany.lab99;
+
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -12,22 +13,23 @@ import java.util.Scanner;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-
-
 public class NotificationToGroupPosted extends Notification {
-    private static final String NOTIFICATIONS_FILE = "NotificationToGroupPosted.json"; 
- private String groupId;
- private String contentId;
- private ArrayList<String> members;
+
+    private static final String NOTIFICATIONS_FILE = "NotificationToGroupPosted.json";
+    private String groupId;
+    private String contentId;
+    private ArrayList<String> members;
+
     public NotificationToGroupPosted(String groupId, String userId, String message) {
-       super(userId, message); // Call parent constructor to set user ID and message
+        super(userId, message); // Call parent constructor to set user ID and message
         this.groupId = groupId;
     }
 
-      public String getGroupId() {
+    public String getGroupId() {
         return groupId;
     }
-        public static void saveNotifications(ArrayList<JSONObject> notifications) {
+
+    public static void saveNotifications(ArrayList<JSONObject> notifications) {
         JSONArray notificationsArray = new JSONArray(notifications);
         try (FileWriter file = new FileWriter(NOTIFICATIONS_FILE)) {
             file.write(notificationsArray.toString(4)); // Write with indentation
@@ -36,7 +38,8 @@ public class NotificationToGroupPosted extends Notification {
             System.err.println("Error saving notifications: " + e.getMessage());
         }
     }
-          // Load group notifications from the file
+    // Load group notifications from the file
+
     public static ArrayList<JSONObject> loadNotifications() {
         ArrayList<JSONObject> notifications = new ArrayList<>();
         File file = new File(NOTIFICATIONS_FILE);
@@ -71,22 +74,25 @@ public class NotificationToGroupPosted extends Notification {
         return notifications;
     }
 //notify
-    public static void createGroupPostNotification(String groupId, String posterId, String contentId,ArrayList<String>membersid) {
-            ArrayList<JSONObject> notifications = loadNotifications();
-for(String id:membersid){
-        JSONObject notification = new JSONObject();
-        notification.put("groupId", groupId);
-        notification.put("poster", posterId);
-        notification.put("message", "this content is posted "+contentId);
-                notification.put("adminId",id);
-        notifications.add(notification);
-        
-}
- saveNotifications(notifications);
 
-      
+    public static void createGroupPostNotification(String groupId, String posterId, String contentId, ArrayList<String> membersid) {
+        ArrayList<JSONObject> notifications = loadNotifications();
+        for (String id : membersid) {
+            if (!membersid.equals(posterId)) {
+                JSONObject notification = new JSONObject();
+                notification.put("groupId", groupId);
+                notification.put("poster", posterId);
+                notification.put("message", "this content is posted " + contentId);
+                notification.put("adminId", id);
+                notifications.add(notification);
+
+            }
+        }
+        saveNotifications(notifications);
+
     }
-      // Function to return notifications for a specific memberId
+    // Function to return notifications for a specific memberId
+
     public static ArrayList<NotificationToGroupPosted> getNotificationsForMember(String memberId) {
         ArrayList<NotificationToGroupPosted> memberNotifications = new ArrayList<>();
         ArrayList<JSONObject> notifications = loadNotifications();
