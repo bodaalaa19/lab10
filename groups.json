@@ -3,59 +3,72 @@
         "groupName": "group1",
         "groupId": "group1645596773",
         "groupCreator": "j",
-        "groupPhoto": "photo1",
+        "groupPhoto": "C:\\Users\\Victus\\Downloads\\downloaded images\\emoticon.png",
         "posts": [
             {
-                "imagesrc": "image1",
+                "imagesrc": "C:\\Users\\Victus\\Downloads\\downloaded images\\emoticon.png",
                 "postId": "post1822775443",
                 "userId": "best",
-                "content": "bestEditedPost1byAdmin",
+                "content": "bestpost1ingroup",
                 "timestamp": "11-12-2024 17:15"
             },
             {
-                "imagesrc": "img2",
+                "imagesrc": "C:\\Users\\Victus\\Downloads\\downloaded images\\emoticon.png",
                 "postId": "post1953790154",
                 "userId": "best",
-                "content": "bestPost2",
+                "content": "bestPost22222222",
                 "timestamp": "11-12-2024 17:15"
+            },
+            {
+                "imagesrc": "C:\\Users\\Victus\\Downloads\\downloaded images\\cow.png",
+                "postId": "post1992634090",
+                "userId": "best",
+                "content": "abdoo is here",
+                "timestamp": "12-12-2024 18:38"
+            },
+            {
+                "imagesrc": "null",
+                "postId": "post776019357",
+                "userId": "best",
+                "content": "add",
+                "timestamp": "12-12-2024 18:38"
             }
         ],
-        "admins": [
-            {"adminId": "j"},
-            {"adminId": "best"}
-        ],
+        "admins": [{"adminId": "j"}],
         "users": [
             {"userId": "j"},
-            {"userId": "best"},
             {"userId": "oo"},
-            {"userId": "ahmed"}
+            {"userId": "best"}
         ]
     },
     {
-        "groupName": "group2",
-        "groupId": "group977908143",
-        "groupCreator": "ahmed",
-        "groupPhoto": "img2",
+        "groupName": "bodaFirstGroup",
+        "groupId": "group696131873",
+        "groupCreator": "best",
+        "groupPhoto": "C:\\Users\\Victus\\Downloads\\downloaded images\\emoticon.png",
         "posts": [],
-        "admins": [{"adminId": "ahmed"}],
-        "users": [{"userId": "ahmed"}]
+        "admins": [{"adminId": "best"}],
+        "users": [{"userId": "best"}]
     },
     {
-        "groupName": "group3",
-        "groupId": "group879427884",
-        "groupCreator": "ahmed",
-        "groupPhoto": "img3",
+        "groupName": "aaaa",
+        "groupId": "group1394628288",
+        "groupCreator": "best",
+        "groupPhoto": "C:\\Users\\Victus\\Documents\\GitHub\\lab10\\src\\main\\java\\com\\mycompany\\lab99\\defaultCover.jpg",
         "posts": [],
-        "admins": [{"adminId": "ahmed"}],
-        "users": [{"userId": "ahmed"}]
+        "admins": [{"adminId": "best"}],
+        "users": [
+            {"userId": "best"},
+            {"userId": "oo"}
+        ]
     },
     {
-        "groupName": "group4",
-        "groupId": "group421207763",
-        "groupCreator": "oo",
-        "groupPhoto": "img4",
+        "groupName": "alooo",
+        "groupId": "group965843722",
+        "groupCreator": "best",
+        "groupPhoto": "C:\\Users\\Victus\\Downloads\\downloaded images\\report.png",
         "posts": [],
-        "admins": [{"adminId": "oo"}],
-        "users": [{"userId": "oo"}]
+        "admins": [{"adminId": "best"}],
+        "users": [{"userId": "best"}]
     }
 ]

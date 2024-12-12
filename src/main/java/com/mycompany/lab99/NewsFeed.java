@@ -95,6 +95,7 @@ public class NewsFeed extends javax.swing.JFrame {
         blockButton = new javax.swing.JButton();
         removeButton = new javax.swing.JButton();
         viewProfileButton = new javax.swing.JButton();
+        GroupsBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -238,6 +239,14 @@ public class NewsFeed extends javax.swing.JFrame {
             }
         });
 
+        GroupsBtn.setBackground(new java.awt.Color(51, 51, 255));
+        GroupsBtn.setText("Groups");
+        GroupsBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GroupsBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -258,7 +267,10 @@ public class NewsFeed extends javax.swing.JFrame {
                             .addComponent(refresh2)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(AddSuggest, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(AddSuggest, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(GroupsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -315,6 +327,8 @@ public class NewsFeed extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(refresh2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(GroupsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(AddSuggest)
                         .addGap(42, 42, 42))
@@ -519,6 +533,13 @@ public class NewsFeed extends javax.swing.JFrame {
         viewprofile.setVisible(true);
     }//GEN-LAST:event_viewProfileButtonActionPerformed
 
+    private void GroupsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GroupsBtnActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        Groups groups=new Groups();
+        groups.setVisible(true);
+    }//GEN-LAST:event_GroupsBtnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -563,6 +584,7 @@ public class NewsFeed extends javax.swing.JFrame {
     private javax.swing.JList<String> FriendReqList;
     private javax.swing.JList<String> FriendsPostsList;
     private javax.swing.JList<String> FriendsStoriesList;
+    private javax.swing.JButton GroupsBtn;
     private javax.swing.JButton SearchBtn;
     private javax.swing.JList<String> SuggestList;
     private javax.swing.JButton UnblockBtn;
