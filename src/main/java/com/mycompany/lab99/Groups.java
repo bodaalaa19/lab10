@@ -285,9 +285,21 @@ ArrayList<Group> groups=Group.loadGroups();
             break;
             }
         }
+        if(Group.isCreator(l.getGroupId(), LoginScreen.activeUser.getUserId())){
+        CreatorGroup creatorGroup=new CreatorGroup(l);
+        creatorGroup.setVisible(true);
+                this.setVisible(false);
+
+        }
+        else if(Group.isAdmin(l.getGroupId(), LoginScreen.activeUser.getUserId())){
+        AdminGroup adminGroup=new AdminGroup(l);
+        adminGroup.setVisible(true);
+        this.setVisible(false);
+        }
+        else{
         NormalUserGroup normalUserGroup=new NormalUserGroup(l);
         normalUserGroup.setVisible(true);
-        this.setVisible(false);
+        this.setVisible(false);}
     }//GEN-LAST:event_ViewMyGroupActionPerformed
 
     /**

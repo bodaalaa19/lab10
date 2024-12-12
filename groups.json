@@ -4,51 +4,21 @@
         "groupId": "group1645596773",
         "groupCreator": "j",
         "groupPhoto": "C:\\Users\\Victus\\Downloads\\downloaded images\\emoticon.png",
-        "posts": [
-            {
-                "imagesrc": "C:\\Users\\Victus\\Downloads\\downloaded images\\emoticon.png",
-                "postId": "post1822775443",
-                "userId": "best",
-                "content": "bestpost1ingroup",
-                "timestamp": "11-12-2024 17:15"
-            },
-            {
-                "imagesrc": "C:\\Users\\Victus\\Downloads\\downloaded images\\emoticon.png",
-                "postId": "post1953790154",
-                "userId": "best",
-                "content": "bestPost22222222",
-                "timestamp": "11-12-2024 17:15"
-            },
-            {
-                "imagesrc": "C:\\Users\\Victus\\Downloads\\downloaded images\\cow.png",
-                "postId": "post1992634090",
-                "userId": "best",
-                "content": "abdoo is here",
-                "timestamp": "12-12-2024 18:38"
-            },
-            {
-                "imagesrc": "null",
-                "postId": "post776019357",
-                "userId": "best",
-                "content": "add",
-                "timestamp": "12-12-2024 18:38"
-            }
+        "posts": [{
+            "imagesrc": "C:\\Users\\Victus\\Downloads\\downloaded images\\emoticon.png",
+            "postId": "post1953790154",
+            "userId": "best",
+            "content": "bestPost22222222",
+            "timestamp": "11-12-2024 17:15"
+        }],
+        "admins": [
+            {"adminId": "j"},
+            {"adminId": "best"}
         ],
-        "admins": [{"adminId": "j"}],
         "users": [
             {"userId": "j"},
-            {"userId": "oo"},
             {"userId": "best"}
         ]
-    },
-    {
-        "groupName": "bodaFirstGroup",
-        "groupId": "group696131873",
-        "groupCreator": "best",
-        "groupPhoto": "C:\\Users\\Victus\\Downloads\\downloaded images\\emoticon.png",
-        "posts": [],
-        "admins": [{"adminId": "best"}],
-        "users": [{"userId": "best"}]
     },
     {
         "groupName": "aaaa",
@@ -70,105 +40,14 @@
         "posts": [],
         "admins": [{"adminId": "best"}],
         "users": [{"userId": "best"}]
-    },
-    {
-        "groupName": "test",
-        "groupId": "group1640009000",
-        "groupCreator": "11",
-        "groupPhoto": "C:\\Users\\Victus\\Documents\\GitHub\\lab10\\src\\main\\java\\com\\mycompany\\lab99\\defaultCover.jpg",
-        "posts": [
-            {
-                "imagesrc": "null",
-                "postId": "post231615147",
-                "userId": "11",
-                "content": "testestestest",
-                "timestamp": "12-12-2024 21:10"
-            },
-            {
-                "imagesrc": "null",
-                "postId": "post936759689",
-                "userId": "11",
-                "content": "yyyyyyyyyy",
-                "timestamp": "12-12-2024 21:10"
-            },
-            {
-                "imagesrc": "null",
-                "postId": "post1498338469",
-                "userId": "sh",
-                "content": "gyihkjlkw",
-                "timestamp": "12-12-2024 21:12"
-            },
-            {
-                "imagesrc": "null",
-                "postId": "post1990658715",
-                "userId": "sh",
-                "content": "aaaaaa",
-                "timestamp": "12-12-2024 21:21"
-            },
-            {
-                "imagesrc": "null",
-                "postId": "post1541112938",
-                "userId": "sh",
-                "content": "gggggggggggggg",
-                "timestamp": "12-12-2024 21:26"
-            },
-            {
-                "imagesrc": "null",
-                "postId": "post1843938082",
-                "userId": "sh",
-                "content": "jjjjjjjjjjjjjjj",
-                "timestamp": "12-12-2024 21:30"
-            },
-            {
-                "imagesrc": "null",
-                "postId": "post2091171750",
-                "userId": "11",
-                "content": "temp",
-                "timestamp": "12-12-2024 21:41"
-            },
-            {
-                "imagesrc": "null",
-                "postId": "post1779575185",
-                "userId": "11",
-                "content": "hannnnnnnnnn",
-                "timestamp": "12-12-2024 21:56"
-            },
-            {
-                "imagesrc": "null",
-                "postId": "post184834102",
-                "userId": "11",
-                "content": "post1",
-                "timestamp": "12-12-2024 22:10"
-            },
-            {
-                "imagesrc": "null",
-                "postId": "post513243279",
-                "userId": "11",
-                "content": "post5",
-                "timestamp": "12-12-2024 22:46"
-            },
-            {
-                "imagesrc": "null",
-                "postId": "post845457943",
-                "userId": "11",
-                "content": "pppppppppppppppppppp",
-                "timestamp": "12-12-2024 22:53"
-            },
-            {
-                "imagesrc": "null",
-                "postId": "post829555651",
-                "userId": "11",
-                "content": "hhhhhhhhhhhhh",
-                "timestamp": "12-12-2024 23:15"
-            }
-        ],
-        "admins": [{"adminId": "11"}],
-        "users": [
-            {"userId": "11"},
-            {"userId": "sh"},
-            {"userId": "tt"},
-            {"userId": "kk"},
-            {"userId": "mm"}
-        ]
+    }
+        "groupName": "newG",
+        "groupId": "group534161621",
+        "groupCreator": "best",
+        "groupPhoto": "C:\\Users\\Victus\\Downloads\\downloaded images\\penguin.png",
+        "posts": [],
+        "admins": [{"adminId": "best"}],
+        "users": [{"userId": "best"}]
+
     }
 ]

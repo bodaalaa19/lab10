@@ -1,6 +1,6 @@
 [
     {
-        "Status": "offline",
+        "Status": "online",
         "hashedPassword": "svyprzGq5pUxJEOd9bwwDB7xH7i+k4rrVwdnxba/2q8=",
         "profile": {
             "profilePhoto": "C:\\Users\\Victus\\Pictures\\Saved Pictures\\photo_2024-11-06_15-21-14.jpg",
@@ -39,7 +39,7 @@
         "email": "abc"
     },
     {
-        "Status": "offline",
+        "Status": "online",
         "hashedPassword": "j0N17GXCxAkqHMIednEkcurg3pmThOgyfElZVxIducI=",
         "profile": {
             "profilePhoto": "C:\\Users\\Victus\\Downloads\\downloaded images\\armchair.png",
