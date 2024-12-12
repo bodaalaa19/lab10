@@ -38,8 +38,8 @@
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="GroupSearchBtn" min="-2" max="-2" attributes="0"/>
                   <Component id="LeaveGroupBtn" max="32767" attributes="0"/>
-                  <Component id="JoinGroupBtn" alignment="0" max="32767" attributes="0"/>
                   <Component id="ViewGroup" alignment="0" max="32767" attributes="0"/>
+                  <Component id="JoinGroupBtn" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace pref="118" max="32767" attributes="0"/>
           </Group>
@@ -65,7 +65,7 @@
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="JoinGroupBtn" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                           <Component id="LeaveGroupBtn" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="ViewGroup" min="-2" max="-2" attributes="0"/>
@@ -136,17 +136,6 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="GroupSearchBtnActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="JoinGroupBtn">
-      <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="cc" red="cc" type="rgb"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Join Group"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JoinGroupBtnActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JButton" name="LeaveGroupBtn">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -154,6 +143,9 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Leave Group"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="LeaveGroupBtnActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="ViewGroup">
       <Properties>
@@ -164,6 +156,17 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ViewGroupActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="JoinGroupBtn">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="cc" red="cc" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Join group"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JoinGroupBtnActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

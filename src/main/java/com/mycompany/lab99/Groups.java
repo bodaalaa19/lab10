@@ -35,9 +35,9 @@ public class Groups extends javax.swing.JFrame {
         GroupSearchList = new javax.swing.JList<>();
         GroupSearch = new javax.swing.JTextField();
         GroupSearchBtn = new javax.swing.JButton();
-        JoinGroupBtn = new javax.swing.JButton();
         LeaveGroupBtn = new javax.swing.JButton();
         ViewGroup = new javax.swing.JButton();
+        JoinGroupBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -72,17 +72,27 @@ public class Groups extends javax.swing.JFrame {
             }
         });
 
-        JoinGroupBtn.setBackground(new java.awt.Color(204, 204, 255));
-        JoinGroupBtn.setText("Join Group");
-
         LeaveGroupBtn.setBackground(new java.awt.Color(204, 204, 255));
         LeaveGroupBtn.setText("Leave Group");
+        LeaveGroupBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LeaveGroupBtnActionPerformed(evt);
+            }
+        });
 
         ViewGroup.setBackground(new java.awt.Color(204, 204, 255));
         ViewGroup.setText("View Group");
         ViewGroup.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ViewGroupActionPerformed(evt);
+            }
+        });
+
+        JoinGroupBtn.setBackground(new java.awt.Color(204, 204, 255));
+        JoinGroupBtn.setText("Join group");
+        JoinGroupBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JoinGroupBtnActionPerformed(evt);
             }
         });
 
@@ -103,8 +113,8 @@ public class Groups extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(GroupSearchBtn)
                     .addComponent(LeaveGroupBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(JoinGroupBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(ViewGroup, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(ViewGroup, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(JoinGroupBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(118, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -124,7 +134,7 @@ public class Groups extends javax.swing.JFrame {
                         .addGroup(layout.createSequentialGroup()
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(JoinGroupBtn)
-                            .addGap(18, 18, 18)
+                            .addGap(16, 16, 16)
                             .addComponent(LeaveGroupBtn)
                             .addGap(18, 18, 18)
                             .addComponent(ViewGroup))
@@ -151,6 +161,8 @@ public class Groups extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_back4BtnActionPerformed
 
+    
+    
     private void GroupSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GroupSearchActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_GroupSearchActionPerformed
@@ -180,6 +192,34 @@ ArrayList<Group> groups=Group.loadGroups();
         }
         GroupSearchList.setModel(listModel2);
     }//GEN-LAST:event_GroupSearchBtnActionPerformed
+
+    private void LeaveGroupBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LeaveGroupBtnActionPerformed
+        // TODO add your handling code here:
+        Group l=null;
+String s=GroupSearchList.getSelectedValue();
+ArrayList<Group> groups=Group.loadGroups();
+        for (Group group : groups) {
+            if(s.equals(group.getGroupName())){
+            l=group;
+            break;
+            }
+        }
+Group.leaveGroup(l.getGroupId(), LoginScreen.activeUser.getUserId());
+    }//GEN-LAST:event_LeaveGroupBtnActionPerformed
+
+    private void JoinGroupBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JoinGroupBtnActionPerformed
+        // TODO add your handling code here:
+        Group l=null;
+String s=GroupSearchList.getSelectedValue();
+ArrayList<Group> groups=Group.loadGroups();
+        for (Group group : groups) {
+            if(s.equals(group.getGroupName())){
+            l=group;
+            break;
+            }
+        }
+        Group.addToGroup(l.getGroupId(), LoginScreen.activeUser.getUserId());
+    }//GEN-LAST:event_JoinGroupBtnActionPerformed
 
     /**
      * @param args the command line arguments

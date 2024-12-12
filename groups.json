@@ -23,7 +23,6 @@
         "admins": [{"adminId": "j"}],
         "users": [
             {"userId": "j"},
-            {"userId": "best"},
             {"userId": "oo"}
         ]
     },
@@ -34,7 +33,10 @@
         "groupPhoto": "C:\\Users\\Victus\\Downloads\\downloaded images\\emoticon.png",
         "posts": [],
         "admins": [{"adminId": "best"}],
-        "users": [{"userId": "best"}]
+        "users": [
+            {"userId": "best"},
+            {"userId": "oo"}
+        ]
     },
     {
         "groupName": "aaaa",
@@ -43,7 +45,10 @@
         "groupPhoto": "C:\\Users\\Victus\\Documents\\GitHub\\lab10\\src\\main\\java\\com\\mycompany\\lab99\\defaultCover.jpg",
         "posts": [],
         "admins": [{"adminId": "best"}],
-        "users": [{"userId": "best"}]
+        "users": [
+            {"userId": "best"},
+            {"userId": "oo"}
+        ]
     },
     {
         "groupName": "alooo",
