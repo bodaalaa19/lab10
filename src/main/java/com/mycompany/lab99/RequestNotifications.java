@@ -101,8 +101,6 @@ public static ArrayList<RequestNotifications> UserRequestsNotifications(String u
 }
 
 
-
-
    public static boolean removeRequestNotification(String senderId, String receiverId) {
     ArrayList<JSONObject> requests = loadRequests(); // Load current notifications
     boolean requestFound = false;
