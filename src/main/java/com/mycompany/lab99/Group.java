@@ -616,4 +616,44 @@ public class Group {
         
         return groupNames;
     }
+    
+    
+    public static void deleteGroup(String groupId, String adminId){
+        ArrayList<Group> groups=loadGroups();
+        //ArrayList<User> users=User.loadUsers();
+        
+        Group wantedGroup=null;
+        for(int i=0;i<groups.size();i++){
+            if(groupId.equals(groups.get(i).getGroupId())){
+                wantedGroup=groups.get(i);
+                break;
+            }
+        }
+        
+        if(wantedGroup==null){
+            JOptionPane.showMessageDialog(null, "Group doesnt exist");
+            return;
+        }
+        
+        if (!wantedGroup.getAdminIds().contains(adminId)) {
+            JOptionPane.showMessageDialog(null, "User is not an Admin!");
+            return;
+        }
+        
+        if (wantedGroup.getAdminIds().contains(adminId) && !(wantedGroup.getGroupCreator().equals(adminId))) {
+            JOptionPane.showMessageDialog(null, "Only Primary Admin can delete group!");
+            return;
+        }
+        
+        boolean delete=false;
+        if(wantedGroup.getGroupCreator().equals(adminId)){
+            delete=true;
+        }
+        
+        if(delete){
+            groups.remove(wantedGroup);
+            JOptionPane.showMessageDialog(null, "Group Deleted!");
+        }
+        Group.saveGroups(groups);
+    }
 }
