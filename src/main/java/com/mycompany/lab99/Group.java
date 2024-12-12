@@ -603,4 +603,17 @@ public class Group {
         }
         return result;
     }
+    
+    public static ArrayList<String> getAllGroupsForUser(String userId){
+        ArrayList<String> groupNames=new ArrayList<>();
+        ArrayList<Group> groups = loadGroups();
+        
+        for(int i=0;i<groups.size();i++){
+            if(groups.get(i).getUserIds().contains(userId)){
+                groupNames.add(groups.get(i).getGroupName());
+            }
+        }
+        
+        return groupNames;
+    }
 }
