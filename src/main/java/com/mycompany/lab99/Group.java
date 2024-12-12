@@ -243,7 +243,6 @@ public class Group {
         return groupList;
     }
     
-    
     public static void addToGroup(String groupId,String userId){
         ArrayList<Group> groups=loadGroups(); //loads all groups from json file
         ArrayList<User> users=User.loadUsers(); //loads all users from json file
@@ -256,18 +255,16 @@ public class Group {
                 break;
             }
         }
-        
-        //if user doesnt exist in database, a message will be shown
-        if(!userExists){
+
+        if (!userExists) {
             JOptionPane.showMessageDialog(null, "User doesnt exist");
             return;
         }
-        
-        Group wantedGroup=null;
-        //checks if the required group is within the saved groups
-        for(int i=0;i<groups.size();i++){
-            if(groupId.equals(groups.get(i).getGroupId())){
-                wantedGroup=groups.get(i);
+
+        Group wantedGroup = null;
+        for (int i = 0; i < groups.size(); i++) {
+            if (groupId.equals(groups.get(i).getGroupId())) {
+                wantedGroup = groups.get(i);
                 break;
             }
         }
@@ -276,14 +273,13 @@ public class Group {
             JOptionPane.showMessageDialog(null, "Group doesnt exist");
             return;
         }
-        
-        //checks if user is already a member of the group
-        if(wantedGroup.getUserIds().contains(userId)){
+
+        if (wantedGroup.getUserIds().contains(userId)) {
             JOptionPane.showMessageDialog(null, "User already in group");
             return;
         }
-        
         //addes user to group if he is not a member and sends notification
+
         wantedGroup.getUserIds().add(userId);
         notifyGroupAddition( groupId, userId);
         JOptionPane.showMessageDialog(null, "User added to the group.");
@@ -294,7 +290,7 @@ public class Group {
     public static void removeUserFromGroup(String groupId, String adminId, String userId){
         ArrayList<Group> groups=loadGroups();
         //ArrayList<User> users=User.loadUsers();
-        
+
         Group wantedGroup=null;
         //checks if the required group is within the saved groups
         for(int i=0;i<groups.size();i++){
@@ -313,6 +309,7 @@ public class Group {
         if(wantedGroup.getAdminIds().contains(adminId)){
             removeMemberAccess=true;
         }
+
         
          if (wantedGroup.getAdminIds().contains(userId)) {
         wantedGroup.getAdminIds().remove(userId);
@@ -320,6 +317,7 @@ public class Group {
         if(removeMemberAccess){
             if(wantedGroup.getUserIds().contains(userId)){
                 if(userId.equals(wantedGroup.getGroupCreator())){
+
                     JOptionPane.showMessageDialog(null, "Cannot remove Group Creator!");
                     return;
                 }else{
@@ -343,7 +341,7 @@ public class Group {
     public static void addPostToGroup(String groupId, String userId, String content,LocalDateTime timeStamp, String imageSource){
         ArrayList<Group> groups=loadGroups();
         //ArrayList<User> users=User.loadUsers();
-        
+
         Group wantedGroup=null;
         //checks if the required group is within the saved groups
         for(int i=0;i<groups.size();i++){
@@ -357,15 +355,17 @@ public class Group {
             JOptionPane.showMessageDialog(null, "Group doesnt exist");
             return;
         }
-        
+
         //checks if user is member of the group
+
         if (!wantedGroup.getUserIds().contains(userId)) {
             JOptionPane.showMessageDialog(null, "User is not a member of the group.");
             return;
         }
-        
+
         //creation of new post
         Post post=new Post(userId,content,timeStamp,imageSource);
+
         wantedGroup.getPosts().add(post);
         
         ArrayList<String>members=wantedGroup.getUserIds();
@@ -378,7 +378,7 @@ public class Group {
         Group.saveGroups(groups);
         
     }
-    
+
     public static void removePostFromGroup(String groupId, String userId,String postId){
         ArrayList<Group> groups=loadGroups(); //loads all groups from json file
         
@@ -387,6 +387,7 @@ public class Group {
         for(int i=0;i<groups.size();i++){
             if(groupId.equals(groups.get(i).getGroupId())){
                 wantedGroup=groups.get(i);
+
                 break;
             }
         }
@@ -395,7 +396,7 @@ public class Group {
             JOptionPane.showMessageDialog(null, "Group doesnt exist");
             return;
         }
-        
+
         ArrayList<Post> groupPosts=wantedGroup.getPosts(); //arraylist that gets all required group posts
         Post post=null;
         for(int i=0;i<groupPosts.size();i++){
@@ -405,22 +406,21 @@ public class Group {
                 break;
             }
         }
-        
-        boolean removePostAccess=false;
-        if(post==null){
-            //post doesn't exist
+
+        boolean removePostAccess = false;
+        if (post == null) {
             JOptionPane.showMessageDialog(null, "Post doesnt exist");
             return;
-        }else{
-            //post found, removal granted for admins or post owner
-            if(wantedGroup.getAdminIds().contains(userId) || post.getUserId().equals(userId)){
-                removePostAccess=true;
+        } else {
+            if (wantedGroup.getAdminIds().contains(userId) || post.getUserId().equals(userId)) {
+                removePostAccess = true;
             }
         }
-        
+
         if(removePostAccess){
             //if removal is granted, post removed
             if(post!=null){
+
                 groupPosts.remove(post);
                 JOptionPane.showMessageDialog(null, "Post removed!");
             }
@@ -428,7 +428,7 @@ public class Group {
         
         Group.saveGroups(groups);
     }
-    
+
     public static void editGroupPost(String groupId,String userId,String postId, String content){
         ArrayList<Group> groups=loadGroups(); //loads all groups from json file
         
@@ -445,37 +445,37 @@ public class Group {
             JOptionPane.showMessageDialog(null, "Group doesnt exist");
             return;
         }
-        
+
         ArrayList<Post> groupPosts=wantedGroup.getPosts(); //arraylist that gets all required group posts
         Post post=null;
         for(int i=0;i<groupPosts.size();i++){
             //searchs for a post with id that matchs the post id required to be edited
             if(groupPosts.get(i).getContentId().equals(postId)){
                 post=groupPosts.get(i);
+
                 break;
             }
         }
-        
-        boolean editPostAccess=false;
-        if(post==null){
-            //post doesn't exist
+
+        boolean editPostAccess = false;
+        if (post == null) {
             JOptionPane.showMessageDialog(null, "Post doesnt exist");
             return;
-        }else{
-            //post found, modification granted for admins or post owner
-            if(wantedGroup.getAdminIds().contains(userId) || post.getUserId().equals(userId)){
-                editPostAccess=true;
+        } else {
+            if (wantedGroup.getAdminIds().contains(userId) || post.getUserId().equals(userId)) {
+                editPostAccess = true;
             }
         }
-        
+
         if(editPostAccess){
             //if modification is granted, post edited
+
             post.setContent(content);
             JOptionPane.showMessageDialog(null, "Post Edited");
         }
         Group.saveGroups(groups);
     }
-    
+
     public static void promoteToAdmin(String groupId,String adminId,String userId){
         ArrayList<Group> groups=loadGroups(); //loads all groups from json file
         
@@ -484,6 +484,7 @@ public class Group {
         for(int i=0;i<groups.size();i++){
             if(groupId.equals(groups.get(i).getGroupId())){
                 wantedGroup=groups.get(i);
+
                 break;
             }
         }
@@ -492,14 +493,17 @@ public class Group {
             JOptionPane.showMessageDialog(null, "Group doesnt exist");
             return;
         }
+
         
         //checks if user is not a member of the group
+
         if (!wantedGroup.getUserIds().contains(userId)) {
             JOptionPane.showMessageDialog(null, "User is not a member of the group.");
             return;
         }
-        
+
         //checks if admin is the primary admin
+
         if (wantedGroup.getAdminIds().contains(adminId) && !(wantedGroup.getGroupCreator().equals(adminId))) {
             JOptionPane.showMessageDialog(null, "Only Primary Admin can promote!");
             return;
@@ -509,6 +513,7 @@ public class Group {
         if(wantedGroup.getGroupCreator().equals(adminId)){
             promote=true;
         }
+
         
         if(promote){
             //if user is not admin, he will get promoted
@@ -517,12 +522,14 @@ public class Group {
                 JOptionPane.showMessageDialog(null, "User promoted to Admin!");
             }else{
                 //if user is already an admin, nothing changes
+
                 JOptionPane.showMessageDialog(null, "User is already an Admin!");
             }
         }
             
         Group.saveGroups(groups);
     }
+
     
     public static void demoteFromAdmin(String groupId, String adminId, String userId){
         ArrayList<Group> groups=loadGroups();
@@ -532,6 +539,7 @@ public class Group {
         for(int i=0;i<groups.size();i++){
             if(groupId.equals(groups.get(i).getGroupId())){
                 wantedGroup=groups.get(i);
+
                 break;
             }
         }
@@ -540,25 +548,31 @@ public class Group {
             JOptionPane.showMessageDialog(null, "Group doesnt exist");
             return;
         }
-        
+
         //checks if user is a member of the group
+
         if (!wantedGroup.getUserIds().contains(userId)) {
             JOptionPane.showMessageDialog(null, "User is not a member of the group.");
             return;
         }
-        
+
         //checks if user is not an admin
+
         if (!wantedGroup.getAdminIds().contains(userId)) {
             JOptionPane.showMessageDialog(null, "User is not an Admin!");
             return;
         }
+
         
         //checks if user is the primary admin
+
         if (userId.equals(wantedGroup.getGroupCreator())) {
             JOptionPane.showMessageDialog(null, "Cannot demote the group creator!");
             return;
         }
+
         //checks if user is not the primary admin
+
         if (wantedGroup.getAdminIds().contains(adminId) && !(wantedGroup.getGroupCreator().equals(adminId))) {
             JOptionPane.showMessageDialog(null, "Only Primary Admin can demote!");
             return;
@@ -568,7 +582,7 @@ public class Group {
         if(wantedGroup.getGroupCreator().equals(adminId)){
             demote=true;
         }
-        
+
         if(demote){
             if(wantedGroup.getAdminIds().contains(userId)){
                 //if user is admin, he will get demoted
@@ -576,6 +590,7 @@ public class Group {
                 JOptionPane.showMessageDialog(null, "User demoted from Admin!");
             }else{
                 //if user is not an admin, nothing changes
+
                 JOptionPane.showMessageDialog(null, "User is not an Admin!");
             }
         }
@@ -585,7 +600,7 @@ public class Group {
     public static boolean isAdmin(String groupId, String adminId){
         ArrayList<Group> groups=loadGroups();
         //ArrayList<User> users=User.loadUsers();
-        
+
         Group wantedGroup=null;
         //checks if the required group is within the saved groups
         for(int i=0;i<groups.size();i++){
@@ -599,6 +614,7 @@ public class Group {
         boolean isAdmin=false;
         if(wantedGroup.getAdminIds().contains(adminId)){
             isAdmin=true;
+
         }
         return isAdmin;
     }
@@ -606,7 +622,7 @@ public class Group {
     public static boolean isCreator(String groupId, String adminId){
         ArrayList<Group> groups=loadGroups();
         //ArrayList<User> users=User.loadUsers();
-        
+
         Group wantedGroup=null;
         //checks if the required group is within the saved groups
         for(int i=0;i<groups.size();i++){
@@ -615,17 +631,17 @@ public class Group {
                 break;
             }
         }
-        
-        boolean isCreator=false;
-        //checks if user is the group creator
-        if(wantedGroup.getGroupCreator().equals(adminId)){
-            isCreator=true;
+
+        boolean isCreator = false;
+        if (wantedGroup.getGroupCreator().equals(adminId)) {
+            isCreator = true;
         }
         return isCreator;
     }
-    
+
     public static ArrayList<Group> searchForGroup(String groupName){
         ArrayList<Group> groups=loadGroups(); //loads all grouops from json file
+
         ArrayList<Group> result = new ArrayList<>();
         
         for(Group group : groups){
@@ -685,12 +701,38 @@ public class Group {
         for(int i=0;i<groups.size();i++){
             //group name added to list if user is a member of it
             if(groups.get(i).getUserIds().contains(userId)){
+
                 groupNames.add(groups.get(i).getGroupName());
             }
         }
         
         return groupNames;
     }
+
+
+    public static String getGroupNameFromId(String groupId) {
+        String groupName = null;
+        ArrayList<Group> groups = loadGroups();
+        for (int i = 0; i < groups.size(); i++) {
+            if (groups.get(i).getGroupId().equals(groupId)) {
+                groupName = groups.get(i).getGroupName();
+            }
+        }
+
+        return groupName;
+    }
+    
+    public static String getGroupIdFromName(String n) {
+        String groupId = null;
+        ArrayList<Group> groups = loadGroups();
+        for (int i = 0; i < groups.size(); i++) {
+            if (groups.get(i).getGroupName().equals(n)) {
+                groupId = groups.get(i).getGroupId();
+            }
+        }
+
+        return groupId;
+
     
     public static ArrayList<Group> suggestGroups(String userId){
         ArrayList<Group> groups=loadGroups(); //loads all grouops from json file
