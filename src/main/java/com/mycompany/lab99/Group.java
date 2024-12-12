@@ -17,6 +17,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class Group {
+
     private String groupName;
     private String groupId;
     private String photoPath;
@@ -27,7 +28,7 @@ public class Group {
 
     //constructor to create new group
     public Group(String userId, String groupName, String photoPath) {
-        this.groupCreator=userId;
+        this.groupCreator = userId;
         this.groupName = groupName;
         this.photoPath = photoPath;
         adminIds = new ArrayList<>();
@@ -35,13 +36,13 @@ public class Group {
         userIds = new ArrayList<>();
         userIds.add(this.groupCreator);
         posts = new ArrayList<>();
-        Random random=new Random(); //generates random ids for groups
-        setGroupId("group"+random.nextInt(Integer.MAX_VALUE));
+        Random random = new Random(); //generates random ids for groups
+        setGroupId("group" + random.nextInt(Integer.MAX_VALUE));
     }
 
     //constructor to load groups from json file
-    public Group(String groupCreator,String groupName, String groupId, String photoPath) {
-        this.groupCreator=groupCreator;
+    public Group(String groupCreator, String groupName, String groupId, String photoPath) {
+        this.groupCreator = groupCreator;
         this.groupName = groupName;
         this.groupId = groupId;
         this.photoPath = photoPath;
@@ -51,8 +52,6 @@ public class Group {
         userIds.add(this.groupCreator);
         posts = new ArrayList<>();
     }
-    
-    
 
     public String getGroupName() {
         return groupName;
@@ -109,8 +108,7 @@ public class Group {
     public void setGroupCreator(String groupCreator) {
         this.groupCreator = groupCreator;
     }
-    
-    
+
     public static void saveGroups(ArrayList<Group> list) {
         JSONArray groupArray = new JSONArray();
         for (Group group : list) {
@@ -119,45 +117,43 @@ public class Group {
             j.put("groupId", group.getGroupId());
             j.put("groupPhoto", group.getPhotoPath());
             j.put("groupCreator", group.getGroupCreator());
-            
-            JSONArray adminArray=new JSONArray();
-            ArrayList<String> admins=group.getAdminIds();
-            if(admins!=null){
-                for(String adminId : admins){
+
+            JSONArray adminArray = new JSONArray();
+            ArrayList<String> admins = group.getAdminIds();
+            if (admins != null) {
+                for (String adminId : admins) {
                     JSONObject aId = new JSONObject();
-                    aId.put("adminId",adminId);
+                    aId.put("adminId", adminId);
                     adminArray.put(aId);
                 }
             }
-            j.put("admins",adminArray);
-            
-            
-            JSONArray userArray=new JSONArray();
-            ArrayList<String> users=group.getUserIds();
-            if(users!=null){
-                for(String userId : users){
-                    JSONObject uId =new JSONObject();
-                    uId.put("userId",userId);
+            j.put("admins", adminArray);
+
+            JSONArray userArray = new JSONArray();
+            ArrayList<String> users = group.getUserIds();
+            if (users != null) {
+                for (String userId : users) {
+                    JSONObject uId = new JSONObject();
+                    uId.put("userId", userId);
                     userArray.put(uId);
                 }
             }
-            j.put("users",userArray);
-            
-            
-            JSONArray postArray=new JSONArray();
-            ArrayList<Post> posts=group.getPosts();
-            if(posts!=null){
-                for(Post post : posts){
+            j.put("users", userArray);
+
+            JSONArray postArray = new JSONArray();
+            ArrayList<Post> posts = group.getPosts();
+            if (posts != null) {
+                for (Post post : posts) {
                     JSONObject postJson = new JSONObject();
-                    postJson.put("postId",post.getContentId());
-                    postJson.put("userId",post.getUserId());
-                    postJson.put("content",post.getContent());
-                    postJson.put("imagesrc",post.getImageSource());
-                    postJson.put("timestamp",post.getTimeStamp().format(getFormatter()));
+                    postJson.put("postId", post.getContentId());
+                    postJson.put("userId", post.getUserId());
+                    postJson.put("content", post.getContent());
+                    postJson.put("imagesrc", post.getImageSource());
+                    postJson.put("timestamp", post.getTimeStamp().format(getFormatter()));
                     postArray.put(postJson);
                 }
             }
-            j.put("posts",postArray);
+            j.put("posts", postArray);
 
             groupArray.put(j);
         }
@@ -169,7 +165,7 @@ public class Group {
             System.err.println("Error writing to file: " + e.getMessage());
         }
     }
-    
+
     public static ArrayList<Group> loadGroups() {
         ArrayList<Group> groupList = new ArrayList<>();
         try (FileReader reader = new FileReader("groups.json")) {
@@ -189,13 +185,11 @@ public class Group {
                 String groupName = groupJson.getString("groupName");
                 String groupId = groupJson.getString("groupId");
                 String groupPhoto = groupJson.getString("groupPhoto");
-                String groupCreator=groupJson.getString("groupCreator");
-
+                String groupCreator = groupJson.getString("groupCreator");
 
                 // Create a Group object
-                Group group=new Group(groupCreator,groupName,groupId,groupPhoto);
+                Group group = new Group(groupCreator, groupName, groupId, groupPhoto);
 
-                
                 if (groupJson.has("admins")) {
                     JSONArray adminsArray = groupJson.getJSONArray("admins");
                     ArrayList<String> adminIds = new ArrayList<>();
@@ -205,7 +199,7 @@ public class Group {
                     }
                     group.setAdminIds(adminIds);
                 }
-                
+
                 if (groupJson.has("users")) {
                     JSONArray usersArray = groupJson.getJSONArray("users");
                     ArrayList<String> userIds = new ArrayList<>();
@@ -215,7 +209,7 @@ public class Group {
                     }
                     group.setUserIds(userIds);
                 }
-                
+
                 if (groupJson.has("posts")) {
                     JSONArray postsArray = groupJson.getJSONArray("posts");
                     ArrayList<Post> posts = new ArrayList<>();
@@ -226,12 +220,12 @@ public class Group {
                         post.setUserId(postJson.getString("userId"));
                         post.setContent(postJson.getString("content"));
                         post.setImageSource(postJson.getString("imagesrc"));
-                        post.setTimeStamp(LocalDateTime.parse(postJson.getString("timestamp"),getFormatter()));
+                        post.setTimeStamp(LocalDateTime.parse(postJson.getString("timestamp"), getFormatter()));
                         posts.add(post);
                     }
                     group.setPosts(posts);
                 }
-                
+
                 groupList.add(group);
             }
         } catch (IOException e) {
@@ -242,420 +236,430 @@ public class Group {
 
         return groupList;
     }
-    
-    
-    public static void addToGroup(String groupId,String userId){
-        ArrayList<Group> groups=loadGroups();
-        ArrayList<User> users=User.loadUsers();
-        
-        boolean userExists=false;
-        for(int i=0;i<users.size();i++){
-            if(userId.equals(users.get(i).getUserId())){
-                userExists=true;
+
+    public static void addToGroup(String groupId, String userId) {
+        ArrayList<Group> groups = loadGroups();
+        ArrayList<User> users = User.loadUsers();
+
+        boolean userExists = false;
+        for (int i = 0; i < users.size(); i++) {
+            if (userId.equals(users.get(i).getUserId())) {
+                userExists = true;
                 break;
             }
         }
-        
-        if(!userExists){
+
+        if (!userExists) {
             JOptionPane.showMessageDialog(null, "User doesnt exist");
             return;
         }
-        
-        Group wantedGroup=null;
-        for(int i=0;i<groups.size();i++){
-            if(groupId.equals(groups.get(i).getGroupId())){
-                wantedGroup=groups.get(i);
+
+        Group wantedGroup = null;
+        for (int i = 0; i < groups.size(); i++) {
+            if (groupId.equals(groups.get(i).getGroupId())) {
+                wantedGroup = groups.get(i);
                 break;
             }
         }
-        
-        if(wantedGroup==null){
+
+        if (wantedGroup == null) {
             JOptionPane.showMessageDialog(null, "Group doesnt exist");
             return;
         }
-        
-        if(wantedGroup.getUserIds().contains(userId)){
+
+        if (wantedGroup.getUserIds().contains(userId)) {
             JOptionPane.showMessageDialog(null, "User already in group");
             return;
         }
-        
+
         wantedGroup.getUserIds().add(userId);
-        notifyGroupAddition( groupId, userId);
+        notifyGroupAddition(groupId, userId);
         JOptionPane.showMessageDialog(null, "User added to the group.");
 
         Group.saveGroups(groups);
     }
-    
-    public static void removeUserFromGroup(String groupId, String adminId, String userId){
-        ArrayList<Group> groups=loadGroups();
+
+    public static void removeUserFromGroup(String groupId, String adminId, String userId) {
+        ArrayList<Group> groups = loadGroups();
         //ArrayList<User> users=User.loadUsers();
-        
-        Group wantedGroup=null;
-        for(int i=0;i<groups.size();i++){
-            if(groupId.equals(groups.get(i).getGroupId())){
-                wantedGroup=groups.get(i);
+
+        Group wantedGroup = null;
+        for (int i = 0; i < groups.size(); i++) {
+            if (groupId.equals(groups.get(i).getGroupId())) {
+                wantedGroup = groups.get(i);
                 break;
             }
         }
-        
-        if(wantedGroup==null){
+
+        if (wantedGroup == null) {
             JOptionPane.showMessageDialog(null, "Group doesnt exist");
             return;
         }
-        
-        boolean removeMemberAccess=false;
-        if(wantedGroup.getAdminIds().contains(adminId)){
-            removeMemberAccess=true;
+
+        boolean removeMemberAccess = false;
+        if (wantedGroup.getAdminIds().contains(adminId)) {
+            removeMemberAccess = true;
         }
-        
-        
-        if(removeMemberAccess){
-            if(wantedGroup.getUserIds().contains(userId)){
-                if(userId.equals(wantedGroup.getGroupCreator())){
+
+        if (removeMemberAccess) {
+            if (wantedGroup.getUserIds().contains(userId)) {
+                if (userId.equals(wantedGroup.getGroupCreator())) {
                     JOptionPane.showMessageDialog(null, "Cannot remove Group Creator!");
                     return;
-                }else{
-                  //  removeGroupNotification( groupId,  userId);
+                } else {
+                    //  removeGroupNotification( groupId,  userId);
                     wantedGroup.getUserIds().remove(userId);
                     JOptionPane.showMessageDialog(null, "User removed from the group!");
                     Group.saveGroups(groups);
                     return;
                 }
             }
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "Only admins can remove users!");
-                    return;
+            return;
         }
-        
+
         JOptionPane.showMessageDialog(null, "User doesn't exist in the group!");
-        
-        
+
     }
-    
-    public static void addPostToGroup(String groupId, String userId, String content,LocalDateTime timeStamp, String imageSource){
-        ArrayList<Group> groups=loadGroups();
+
+    public static void addPostToGroup(String groupId, String userId, String content, LocalDateTime timeStamp, String imageSource) {
+        ArrayList<Group> groups = loadGroups();
         //ArrayList<User> users=User.loadUsers();
-        
-        Group wantedGroup=null;
-        for(int i=0;i<groups.size();i++){
-            if(groupId.equals(groups.get(i).getGroupId())){
-                wantedGroup=groups.get(i);
+
+        Group wantedGroup = null;
+        for (int i = 0; i < groups.size(); i++) {
+            if (groupId.equals(groups.get(i).getGroupId())) {
+                wantedGroup = groups.get(i);
                 break;
             }
         }
-        
-        if(wantedGroup==null){
+
+        if (wantedGroup == null) {
             JOptionPane.showMessageDialog(null, "Group doesnt exist");
             return;
         }
-        
+
         if (!wantedGroup.getUserIds().contains(userId)) {
             JOptionPane.showMessageDialog(null, "User is not a member of the group.");
             return;
         }
-        
-        Post post=new Post(userId,content,timeStamp,imageSource);
+
+        Post post = new Post(userId, content, timeStamp, imageSource);
         wantedGroup.getPosts().add(post);
-        
-        ArrayList<String>members=wantedGroup.getUserIds();
-        
+
+        ArrayList<String> members = wantedGroup.getUserIds();
+
         ////////////////////////
-        createGroupPostNotification( groupId,  userId,content,members);
+        createGroupPostNotification(groupId, userId, content, members);
         /////////////////////////
-        
+
         JOptionPane.showMessageDialog(null, "Post added!");
         Group.saveGroups(groups);
-        
+
     }
-    
-    public static void removePostFromGroup(String groupId, String userId,String postId){
-        ArrayList<Group> groups=loadGroups();
+
+    public static void removePostFromGroup(String groupId, String userId, String postId) {
+        ArrayList<Group> groups = loadGroups();
         //ArrayList<User> users=User.loadUsers();
-        
-        Group wantedGroup=null;
-        for(int i=0;i<groups.size();i++){
-            if(groupId.equals(groups.get(i).getGroupId())){
-                wantedGroup=groups.get(i);
+
+        Group wantedGroup = null;
+        for (int i = 0; i < groups.size(); i++) {
+            if (groupId.equals(groups.get(i).getGroupId())) {
+                wantedGroup = groups.get(i);
                 break;
             }
         }
-        
-        if(wantedGroup==null){
+
+        if (wantedGroup == null) {
             JOptionPane.showMessageDialog(null, "Group doesnt exist");
             return;
         }
-        
-        ArrayList<Post> groupPosts=wantedGroup.getPosts();
-        Post post=null;
-        for(int i=0;i<groupPosts.size();i++){
-            if(groupPosts.get(i).getContentId().equals(postId)){
-                post=groupPosts.get(i);
+
+        ArrayList<Post> groupPosts = wantedGroup.getPosts();
+        Post post = null;
+        for (int i = 0; i < groupPosts.size(); i++) {
+            if (groupPosts.get(i).getContentId().equals(postId)) {
+                post = groupPosts.get(i);
                 break;
             }
         }
-        
-        boolean removePostAccess=false;
-        if(post==null){
+
+        boolean removePostAccess = false;
+        if (post == null) {
             JOptionPane.showMessageDialog(null, "Post doesnt exist");
             return;
-        }else{
-            if(wantedGroup.getAdminIds().contains(userId) || post.getUserId().equals(userId)){
-                removePostAccess=true;
+        } else {
+            if (wantedGroup.getAdminIds().contains(userId) || post.getUserId().equals(userId)) {
+                removePostAccess = true;
             }
         }
-        
-        if(removePostAccess){
-            if(post!=null){
+
+        if (removePostAccess) {
+            if (post != null) {
                 groupPosts.remove(post);
                 JOptionPane.showMessageDialog(null, "Post removed!");
             }
         }
-        
+
         Group.saveGroups(groups);
     }
-    
-    public static void editGroupPost(String groupId,String userId,String postId, String content){
-        ArrayList<Group> groups=loadGroups();
+
+    public static void editGroupPost(String groupId, String userId, String postId, String content) {
+        ArrayList<Group> groups = loadGroups();
         //ArrayList<User> users=User.loadUsers();
-        
-        Group wantedGroup=null;
-        for(int i=0;i<groups.size();i++){
-            if(groupId.equals(groups.get(i).getGroupId())){
-                wantedGroup=groups.get(i);
+
+        Group wantedGroup = null;
+        for (int i = 0; i < groups.size(); i++) {
+            if (groupId.equals(groups.get(i).getGroupId())) {
+                wantedGroup = groups.get(i);
                 break;
             }
         }
-        
-        if(wantedGroup==null){
+
+        if (wantedGroup == null) {
             JOptionPane.showMessageDialog(null, "Group doesnt exist");
             return;
         }
-        
-        ArrayList<Post> groupPosts=wantedGroup.getPosts();
-        Post post=null;
-        for(int i=0;i<groupPosts.size();i++){
-            if(groupPosts.get(i).getContentId().equals(postId)){
-                post=groupPosts.get(i);
+
+        ArrayList<Post> groupPosts = wantedGroup.getPosts();
+        Post post = null;
+        for (int i = 0; i < groupPosts.size(); i++) {
+            if (groupPosts.get(i).getContentId().equals(postId)) {
+                post = groupPosts.get(i);
                 break;
             }
         }
-        
-        boolean editPostAccess=false;
-        if(post==null){
+
+        boolean editPostAccess = false;
+        if (post == null) {
             JOptionPane.showMessageDialog(null, "Post doesnt exist");
             return;
-        }else{
-            if(wantedGroup.getAdminIds().contains(userId) || post.getUserId().equals(userId)){
-                editPostAccess=true;
+        } else {
+            if (wantedGroup.getAdminIds().contains(userId) || post.getUserId().equals(userId)) {
+                editPostAccess = true;
             }
         }
-        
-        if(editPostAccess){
+
+        if (editPostAccess) {
             post.setContent(content);
             JOptionPane.showMessageDialog(null, "Post Edited");
         }
         Group.saveGroups(groups);
     }
-    
-    public static void promoteToAdmin(String groupId,String adminId,String userId){
-        ArrayList<Group> groups=loadGroups();
+
+    public static void promoteToAdmin(String groupId, String adminId, String userId) {
+        ArrayList<Group> groups = loadGroups();
         //ArrayList<User> users=User.loadUsers();
-        
-        Group wantedGroup=null;
-        for(int i=0;i<groups.size();i++){
-            if(groupId.equals(groups.get(i).getGroupId())){
-                wantedGroup=groups.get(i);
+
+        Group wantedGroup = null;
+        for (int i = 0; i < groups.size(); i++) {
+            if (groupId.equals(groups.get(i).getGroupId())) {
+                wantedGroup = groups.get(i);
                 break;
             }
         }
-        
-        if(wantedGroup==null){
+
+        if (wantedGroup == null) {
             JOptionPane.showMessageDialog(null, "Group doesnt exist");
             return;
         }
-        
+
         if (!wantedGroup.getUserIds().contains(userId)) {
             JOptionPane.showMessageDialog(null, "User is not a member of the group.");
             return;
         }
-        
+
         if (wantedGroup.getAdminIds().contains(adminId) && !(wantedGroup.getGroupCreator().equals(adminId))) {
             JOptionPane.showMessageDialog(null, "Only Primary Admin can promote!");
             return;
         }
-        
-        boolean promote=false;
-        if(wantedGroup.getGroupCreator().equals(adminId)){
-            promote=true;
+
+        boolean promote = false;
+        if (wantedGroup.getGroupCreator().equals(adminId)) {
+            promote = true;
         }
-        
-        if(promote){
-            if(!wantedGroup.getAdminIds().contains(userId)){
+
+        if (promote) {
+            if (!wantedGroup.getAdminIds().contains(userId)) {
                 wantedGroup.getAdminIds().add(userId);
                 JOptionPane.showMessageDialog(null, "User promoted to Admin!");
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(null, "User is already an Admin!");
             }
         }
-            
+
         Group.saveGroups(groups);
     }
-    
-    public static void demoteFromAdmin(String groupId, String adminId, String userId){
-        ArrayList<Group> groups=loadGroups();
+
+    public static void demoteFromAdmin(String groupId, String adminId, String userId) {
+        ArrayList<Group> groups = loadGroups();
         //ArrayList<User> users=User.loadUsers();
-        
-        Group wantedGroup=null;
-        for(int i=0;i<groups.size();i++){
-            if(groupId.equals(groups.get(i).getGroupId())){
-                wantedGroup=groups.get(i);
+
+        Group wantedGroup = null;
+        for (int i = 0; i < groups.size(); i++) {
+            if (groupId.equals(groups.get(i).getGroupId())) {
+                wantedGroup = groups.get(i);
                 break;
             }
         }
-        
-        if(wantedGroup==null){
+
+        if (wantedGroup == null) {
             JOptionPane.showMessageDialog(null, "Group doesnt exist");
             return;
         }
-        
+
         if (!wantedGroup.getUserIds().contains(userId)) {
             JOptionPane.showMessageDialog(null, "User is not a member of the group.");
             return;
         }
-        
+
         if (!wantedGroup.getAdminIds().contains(userId)) {
             JOptionPane.showMessageDialog(null, "User is not an Admin!");
             return;
         }
-        
+
         if (userId.equals(wantedGroup.getGroupCreator())) {
             JOptionPane.showMessageDialog(null, "Cannot demote the group creator!");
             return;
         }
-        
+
         if (wantedGroup.getAdminIds().contains(adminId) && !(wantedGroup.getGroupCreator().equals(adminId))) {
             JOptionPane.showMessageDialog(null, "Only Primary Admin can demote!");
             return;
         }
-        
-        boolean demote=false;
-        if(wantedGroup.getGroupCreator().equals(adminId)){
-            demote=true;
+
+        boolean demote = false;
+        if (wantedGroup.getGroupCreator().equals(adminId)) {
+            demote = true;
         }
-        
-        if(demote){
-            if(wantedGroup.getAdminIds().contains(userId)){
+
+        if (demote) {
+            if (wantedGroup.getAdminIds().contains(userId)) {
                 wantedGroup.getAdminIds().remove(userId);
                 JOptionPane.showMessageDialog(null, "User demoted from Admin!");
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(null, "User is not an Admin!");
             }
         }
         Group.saveGroups(groups);
     }
-    
-    public static boolean isAdmin(String groupId, String adminId){
-        ArrayList<Group> groups=loadGroups();
+
+    public static boolean isAdmin(String groupId, String adminId) {
+        ArrayList<Group> groups = loadGroups();
         //ArrayList<User> users=User.loadUsers();
-        
-        Group wantedGroup=null;
-        for(int i=0;i<groups.size();i++){
-            if(groupId.equals(groups.get(i).getGroupId())){
-                wantedGroup=groups.get(i);
+
+        Group wantedGroup = null;
+        for (int i = 0; i < groups.size(); i++) {
+            if (groupId.equals(groups.get(i).getGroupId())) {
+                wantedGroup = groups.get(i);
                 break;
             }
         }
-        
-        boolean isAdmin=false;
-        if(wantedGroup.getAdminIds().contains(adminId)){
-            isAdmin=true;
+
+        boolean isAdmin = false;
+        if (wantedGroup.getAdminIds().contains(adminId)) {
+            isAdmin = true;
         }
         return isAdmin;
     }
-    
-    public static boolean isCreator(String groupId, String adminId){
-        ArrayList<Group> groups=loadGroups();
+
+    public static boolean isCreator(String groupId, String adminId) {
+        ArrayList<Group> groups = loadGroups();
         //ArrayList<User> users=User.loadUsers();
-        
-        Group wantedGroup=null;
-        for(int i=0;i<groups.size();i++){
-            if(groupId.equals(groups.get(i).getGroupId())){
-                wantedGroup=groups.get(i);
+
+        Group wantedGroup = null;
+        for (int i = 0; i < groups.size(); i++) {
+            if (groupId.equals(groups.get(i).getGroupId())) {
+                wantedGroup = groups.get(i);
                 break;
             }
         }
-        
-        boolean isCreator=false;
-        if(wantedGroup.getGroupCreator().equals(adminId)){
-            isCreator=true;
+
+        boolean isCreator = false;
+        if (wantedGroup.getGroupCreator().equals(adminId)) {
+            isCreator = true;
         }
         return isCreator;
     }
-    
-    public static ArrayList<Group> searchForGroup(String groupName){
-        ArrayList<Group> groups=loadGroups();
+
+    public static ArrayList<Group> searchForGroup(String groupName) {
+        ArrayList<Group> groups = loadGroups();
         ArrayList<Group> result = new ArrayList<>();
-        
-        for(Group group : groups){
-            if(group.getGroupName().contains(groupName)){
+
+        for (Group group : groups) {
+            if (group.getGroupName().contains(groupName)) {
                 result.add(group);
             }
         }
         return result;
     }
+
     public static void leaveGroup(String groupId, String userId) {
-    ArrayList<Group> groups = loadGroups();
-
-    // Find the desired group
-    Group wantedGroup = null;
-    for (Group group : groups) {
-        if (groupId.equals(group.getGroupId())) {
-            wantedGroup = group;
-            break;
-        }
-    }
-
-    if (wantedGroup == null) {
-        JOptionPane.showMessageDialog(null, "Group doesn't exist");
-        return;
-    }
-
-    // Check if the user is a member of the group
-    if (!wantedGroup.getUserIds().contains(userId)) {
-        JOptionPane.showMessageDialog(null, "User is not a member of the group");
-        return;
-    }
-
-    // Prevent the group creator from leaving
-    if (userId.equals(wantedGroup.getGroupCreator())) {
-        JOptionPane.showMessageDialog(null, "Group creator cannot leave the group");
-        return;
-    }
-
-    // Remove the user from the group
-    wantedGroup.getUserIds().remove(userId);
-
-    // If the user is an admin, remove them from the admin list
-    if (wantedGroup.getAdminIds().contains(userId)) {
-        wantedGroup.getAdminIds().remove(userId);
-    }
-
-    JOptionPane.showMessageDialog(null, "User has left the group");
-
-    // Save updated group information
-    saveGroups(groups);
-}
- 
-    public static ArrayList<String> getAllGroupsForUser(String userId){
-        ArrayList<String> groupNames=new ArrayList<>();
         ArrayList<Group> groups = loadGroups();
-        
-        for(int i=0;i<groups.size();i++){
-            if(groups.get(i).getUserIds().contains(userId)){
+
+        // Find the desired group
+        Group wantedGroup = null;
+        for (Group group : groups) {
+            if (groupId.equals(group.getGroupId())) {
+                wantedGroup = group;
+                break;
+            }
+        }
+
+        if (wantedGroup == null) {
+            JOptionPane.showMessageDialog(null, "Group doesn't exist");
+            return;
+        }
+
+        // Check if the user is a member of the group
+        if (!wantedGroup.getUserIds().contains(userId)) {
+            JOptionPane.showMessageDialog(null, "User is not a member of the group");
+            return;
+        }
+
+        // Prevent the group creator from leaving
+        if (userId.equals(wantedGroup.getGroupCreator())) {
+            JOptionPane.showMessageDialog(null, "Group creator cannot leave the group");
+            return;
+        }
+
+        // Remove the user from the group
+        wantedGroup.getUserIds().remove(userId);
+
+        // If the user is an admin, remove them from the admin list
+        if (wantedGroup.getAdminIds().contains(userId)) {
+            wantedGroup.getAdminIds().remove(userId);
+        }
+
+        JOptionPane.showMessageDialog(null, "User has left the group");
+
+        // Save updated group information
+        saveGroups(groups);
+    }
+
+    public static ArrayList<String> getAllGroupsForUser(String userId) {
+        ArrayList<String> groupNames = new ArrayList<>();
+        ArrayList<Group> groups = loadGroups();
+
+        for (int i = 0; i < groups.size(); i++) {
+            if (groups.get(i).getUserIds().contains(userId)) {
                 groupNames.add(groups.get(i).getGroupName());
             }
         }
-        
+
         return groupNames;
+    }
+
+    public static String getGroupNameFromId(String groupId) {
+        String groupName = null;
+        ArrayList<Group> groups = loadGroups();
+        for (int i = 0; i < groups.size(); i++) {
+            if (groups.get(i).getGroupId().equals(groupId)) {
+                groupName = groups.get(i).getGroupName();
+            }
+        }
+
+        return groupName;
     }
 }

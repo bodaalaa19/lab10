@@ -51,7 +51,7 @@ ArrayList<String> groups=getAllGroupsForUser(LoginScreen.activeUser.getUserId())
         MyGroupsList = new javax.swing.JList<>();
         ViewMyGroup = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         CreateGroupBtn.setBackground(new java.awt.Color(255, 0, 0));
         CreateGroupBtn.setText("Create Group");

@@ -4,6 +4,7 @@
  */
 package com.mycompany.lab99;
 
+import static com.mycompany.lab99.Group.getGroupNameFromId;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -81,7 +82,7 @@ public class NotifyAddedToGroup extends Notification {
         JSONObject notification = new JSONObject();
         notification.put("groupId", groupId);
         notification.put("userId", userId);
-        notification.put("message", "You have been added to the group: " + groupId);
+        notification.put("message", userId+" was added to group: " + getGroupNameFromId(groupId));
  
         notifications.add(notification);
         saveNotifications(notifications);
