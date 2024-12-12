@@ -13,11 +13,6 @@ import static com.mycompany.lab99.Friends.removeFriendship;
 import static com.mycompany.lab99.Friends.search;
 import static com.mycompany.lab99.Friends.suggestFriends;
 import static com.mycompany.lab99.Friends.viewRequestSenders;
-import static com.mycompany.lab99.Group.getGroupIdFromName;
-import static com.mycompany.lab99.Group.getGroupNameFromId;
-import static com.mycompany.lab99.NotificationToGroupPosted.getNotificationsForMember;
-import static com.mycompany.lab99.NotifyAddedToGroup.getUserGroupNotifications;
-import static com.mycompany.lab99.NotifyAddedToGroup.removeGroupNotification;
 import static com.mycompany.lab99.RequestNotifications.UserRequestsNotifications;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
@@ -34,7 +29,7 @@ public class NewsFeed extends javax.swing.JFrame {
      */
     public NewsFeed() {
         initComponents();
-
+        
         DefaultListModel<String> listModel2 = new DefaultListModel<>();
         ArrayList<Post> posts = getFriendPosts(LoginScreen.activeUser.getUserId());
         for (Post post : posts) {
@@ -57,18 +52,9 @@ public class NewsFeed extends javax.swing.JFrame {
         }
         SuggestList.setModel(listModel4);
 
-        //create the notifications list
         DefaultListModel<String> listModel5 = new DefaultListModel<>();
         ArrayList<RequestNotifications> requestnotifications = UserRequestsNotifications(LoginScreen.activeUser.getUserId());
         for (RequestNotifications notification : requestnotifications) {
-            listModel5.addElement(notification.getMessage());
-        }
-        ArrayList<NotificationToGroupPosted> groupPostNotifications = getNotificationsForMember(LoginScreen.activeUser.getUserId());
-        for (NotificationToGroupPosted notification : groupPostNotifications) {
-            listModel5.addElement(notification.getMessage());
-        }
-        ArrayList<NotifyAddedToGroup> addedToGroupNotifications = getUserGroupNotifications(LoginScreen.activeUser.getUserId());
-        for (NotifyAddedToGroup notification : addedToGroupNotifications) {
             listModel5.addElement(notification.getMessage());
         }
         notificationsList.setModel(listModel5);
@@ -239,7 +225,7 @@ public class NewsFeed extends javax.swing.JFrame {
         jLabel5.setText("Notifications");
 
         viewNotificationButton.setBackground(new java.awt.Color(255, 204, 204));
-        viewNotificationButton.setText("View");
+        viewNotificationButton.setText("View notification");
         viewNotificationButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 viewNotificationButtonActionPerformed(evt);
@@ -275,12 +261,11 @@ public class NewsFeed extends javax.swing.JFrame {
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(viewNotificationButton)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -298,24 +283,23 @@ public class NewsFeed extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(idText, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(SearchBtn))))
+                                .addComponent(SearchBtn)))
+                        .addContainerGap(322, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(ViewPostBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(24, 24, 24)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(ViewPostBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(ViewStoryBtn1)))))
-                .addContainerGap(294, Short.MAX_VALUE))
+                                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ViewStoryBtn1)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
                 .addComponent(BackToProfileBtn)
                 .addGap(0, 0, Short.MAX_VALUE))
@@ -364,27 +348,24 @@ public class NewsFeed extends javax.swing.JFrame {
                     .addComponent(jLabel5))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 139, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(ViewPostBtn, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(ViewStoryBtn1, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addGap(67, 67, 67))
                             .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jScrollPane8)
                                     .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
-                                    .addComponent(jScrollPane5))
-                                .addGap(22, 22, 22))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(viewNotificationButton)
-                                        .addGap(89, 89, 89))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(ViewPostBtn)
-                                        .addGap(84, 84, 84))))))
+                                    .addComponent(jScrollPane5))))
+                        .addGap(22, 22, 22))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(ViewStoryBtn1)
-                        .addGap(90, 90, 90))))
+                        .addComponent(viewNotificationButton)
+                        .addGap(89, 89, 89))))
         );
 
         pack();
@@ -444,6 +425,7 @@ public class NewsFeed extends javax.swing.JFrame {
 
     private void refresh2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refresh2ActionPerformed
         // TODO add your handling code here:
+        
 
         // Refresh Friend Posts
         DefaultListModel<String> postsModel = new DefaultListModel<>();
@@ -467,14 +449,6 @@ public class NewsFeed extends javax.swing.JFrame {
         for (RequestNotifications notification : requestnotifications) {
             listModel5.addElement(notification.getMessage());
         }
-        ArrayList<NotificationToGroupPosted> groupPostNotifications = getNotificationsForMember(LoginScreen.activeUser.getUserId());
-        for (NotificationToGroupPosted notification : groupPostNotifications) {
-            listModel5.addElement(notification.getMessage());
-        }
-        ArrayList<NotifyAddedToGroup> addedToGroupNotifications = getUserGroupNotifications(LoginScreen.activeUser.getUserId());
-        for (NotifyAddedToGroup notification : addedToGroupNotifications) {
-            listModel5.addElement(notification.getMessage());
-        }
         notificationsList.setModel(listModel5);
     }//GEN-LAST:event_refresh2ActionPerformed
 
@@ -494,17 +468,17 @@ public class NewsFeed extends javax.swing.JFrame {
 
     private void blockButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_blockButtonActionPerformed
         //block friend
-        String f = searchList.getSelectedValue();
-        String f1 = f.split(" ")[0];
-        blockFriend(LoginScreen.activeUser.getUserId(), f1);
+        String f=searchList.getSelectedValue();
+        String f1=f.split(" ")[0];
+        blockFriend(LoginScreen.activeUser.getUserId(),f1);
         JOptionPane.showMessageDialog(this, "blocked");
     }//GEN-LAST:event_blockButtonActionPerformed
 
     private void removeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeButtonActionPerformed
         //remove friend
-        String f = searchList.getSelectedValue();
-        String f1 = f.split(" ")[0];
-        removeFriendship(LoginScreen.activeUser.getUserId(), f1);
+        String f=searchList.getSelectedValue();
+        String f1=f.split(" ")[0];
+        removeFriendship(LoginScreen.activeUser.getUserId(),f1);
         JOptionPane.showMessageDialog(this, "removed");
     }//GEN-LAST:event_removeButtonActionPerformed
 
@@ -526,87 +500,21 @@ public class NewsFeed extends javax.swing.JFrame {
     private void GroupsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GroupsBtnActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        Groups groups = new Groups();
+        Groups groups=new Groups();
         groups.setVisible(true);
     }//GEN-LAST:event_GroupsBtnActionPerformed
 
     private void viewNotificationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewNotificationButtonActionPerformed
-        String message = notificationsList.getSelectedValue();
-        int index = notificationsList.getSelectedIndex();
-
+        String message=notificationsList.getSelectedValue();
+        
         //
-        if (message.contains("request")) {
+        if(message.contains("request")){
             //notification is a friend request
-
+                       
             //create a friend request page
-            FriendRequestPage friendrequestpage = new FriendRequestPage(message);
+            FriendRequestPage friendrequestpage=new FriendRequestPage(message);
             friendrequestpage.setVisible(true);
-
-        } else if (message.contains("posted")) {
-            //notification is a group post 
-            String groupName = null;
-            ArrayList<NotificationToGroupPosted> groupPostNotifications = getNotificationsForMember(LoginScreen.activeUser.getUserId());
-
-            //get group name
-            for (NotificationToGroupPosted notification : groupPostNotifications) {
-                if (notification.getMessage().equals(message)) {
-                    groupName = getGroupNameFromId(notification.getGroupId());
-                }
-            }
-
-            //get group
-            Group l = null;
-            ArrayList<Group> groups = Group.loadGroups();
-            for (Group group : groups) {
-                if (groupName.equals(group.getGroupName())) {
-                    l = group;
-                    break;
-                }
-            }
-
-            //get content
-            String[] temp=message.split(" ");
-            String x=temp[2];
-            
-            
-            //get post
-            Post p = null;
-            ArrayList<Post> posts = l.getPosts();
-            for (int i = 0; i < posts.size(); i++) {
-                if (posts.get(i).getContent().equals(x)) {
-                    p = posts.get(i);
-                   
-                }
-            }
-            
-            //NormalUserGroup normalUserGroup = new NormalUserGroup(l);
-            //normalUserGroup.setVisible(true);
-            ViewPost viewPost = new ViewPost(p);
-            viewPost.setVisible(true);
-            
-           
-            
-
-        } else if (message.contains("added")) {
-            //member added type notification
-
-            //get content
-            String[] temp=message.split(" ");
-            String groupName=temp[5];
-
-            //get group
-            Group l = null;
-            ArrayList<Group> groups = Group.loadGroups();
-            for (Group group : groups) {
-                if (groupName.equals(group.getGroupName())) {
-                    l = group;
-                    break;
-                }
-            }
-            NormalUserGroup normalUserGroup = new NormalUserGroup(l);
-            normalUserGroup.setVisible(true);
-            this.setVisible(false);
-            removeGroupNotification(getGroupIdFromName(groupName),temp[0]);
+        
         }
     }//GEN-LAST:event_viewNotificationButtonActionPerformed
 

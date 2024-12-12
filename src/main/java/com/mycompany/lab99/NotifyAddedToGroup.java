@@ -4,7 +4,6 @@
  */
 package com.mycompany.lab99;
 
-import static com.mycompany.lab99.Group.getGroupNameFromId;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -82,7 +81,7 @@ public class NotifyAddedToGroup extends Notification {
         JSONObject notification = new JSONObject();
         notification.put("groupId", groupId);
         notification.put("userId", userId);
-        notification.put("message", userId+" was added to group: " + getGroupNameFromId(groupId));
+        notification.put("message", "You have been added to the group: " + groupId);
  
         notifications.add(notification);
         saveNotifications(notifications);
@@ -95,7 +94,7 @@ public class NotifyAddedToGroup extends Notification {
         ArrayList<NotifyAddedToGroup> userNotifications = new ArrayList<>();
 
         for (JSONObject notification : allNotifications) {
-            if (!notification.getString("userId").equals(userId)) {
+            if (notification.getString("userId").equals(userId)) {
                 String groupId = notification.getString("groupId");
                 String message = notification.getString("message");
                 userNotifications.add(new NotifyAddedToGroup(groupId, userId, message)); // Create notification objects

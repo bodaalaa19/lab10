@@ -4,7 +4,6 @@
  */
 package com.mycompany.lab99;
 
-import static com.mycompany.lab99.Group.getGroupNameFromId;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -83,9 +82,10 @@ public class NotificationToGroupPosted extends Notification {
                 JSONObject notification = new JSONObject();
                 notification.put("groupId", groupId);
                 notification.put("poster", posterId);
-                notification.put("message", posterId+ " posted "+contentId+" in "+getGroupNameFromId(groupId));
+                notification.put("message", "this content is posted " + contentId);
                 notification.put("adminId", id);
                 notifications.add(notification);
+
             }
         }
         saveNotifications(notifications);
@@ -105,16 +105,11 @@ public class NotificationToGroupPosted extends Notification {
                 String posterId = notification.getString("poster");
                 String message = notification.getString("message");
 
-                if (!memberId.equals(posterId)) {
-                    NotificationToGroupPosted notificationToGroupPosted = new NotificationToGroupPosted(groupId, posterId, message);
-                    memberNotifications.add(notificationToGroupPosted);
-                }
+                NotificationToGroupPosted notificationToGroupPosted = new NotificationToGroupPosted(groupId, posterId, message);
+                memberNotifications.add(notificationToGroupPosted);
             }
         }
 
         return memberNotifications;
     }
-    
-    
-    
 }
