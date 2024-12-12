@@ -154,6 +154,8 @@ public class ViewGroup extends javax.swing.JFrame {
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
+        Groups g=new Groups();
+        g.setVisible(true);
     }//GEN-LAST:event_backBtnActionPerformed
 private ViewGroup(){}
     /**

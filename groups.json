@@ -3,17 +3,17 @@
         "groupName": "group1",
         "groupId": "group1645596773",
         "groupCreator": "j",
-        "groupPhoto": "photo1",
+        "groupPhoto": "C:\\Users\\Victus\\Downloads\\downloaded images\\emoticon.png",
         "posts": [
             {
-                "imagesrc": "image1",
+                "imagesrc": "C:\\Users\\Victus\\Downloads\\downloaded images\\emoticon.png",
                 "postId": "post1822775443",
                 "userId": "best",
                 "content": "bestpost1ingroup",
                 "timestamp": "11-12-2024 17:15"
             },
             {
-                "imagesrc": "img2",
+                "imagesrc": "C:\\Users\\Victus\\Downloads\\downloaded images\\emoticon.png",
                 "postId": "post1953790154",
                 "userId": "best",
                 "content": "bestPost2",
@@ -44,6 +44,14 @@
         "posts": [],
         "admins": [{"adminId": "best"}],
         "users": [{"userId": "best"}]
+    },
+    {
+        "groupName": "alooo",
+        "groupId": "group965843722",
+        "groupCreator": "best",
+        "groupPhoto": "C:\\Users\\Victus\\Downloads\\downloaded images\\report.png",
+        "posts": [],
+        "admins": [{"adminId": "best"}],
+        "users": [{"userId": "best"}]
     }
 ]
-       
