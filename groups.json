@@ -7,37 +7,25 @@
         "posts": [
             {
                 "imagesrc": "C:\\Users\\Victus\\Downloads\\downloaded images\\emoticon.png",
-                "postId": "post1822775443",
-                "userId": "best",
-                "content": "bestpost1ingroup",
-                "timestamp": "11-12-2024 17:15"
-            },
-            {
-                "imagesrc": "C:\\Users\\Victus\\Downloads\\downloaded images\\emoticon.png",
                 "postId": "post1953790154",
                 "userId": "best",
                 "content": "bestPost22222222",
                 "timestamp": "11-12-2024 17:15"
             },
             {
-                "imagesrc": "C:\\Users\\Victus\\Downloads\\downloaded images\\cow.png",
-                "postId": "post1992634090",
+                "imagesrc": "C:\\Users\\Victus\\Downloads\\downloaded images\\emoticon.png",
+                "postId": "post1647217277",
                 "userId": "best",
-                "content": "abdoo is here",
-                "timestamp": "12-12-2024 18:38"
-            },
-            {
-                "imagesrc": "null",
-                "postId": "post776019357",
-                "userId": "best",
-                "content": "add",
-                "timestamp": "12-12-2024 18:38"
+                "content": "bbbbbb",
+                "timestamp": "12-12-2024 20:33"
             }
         ],
-        "admins": [{"adminId": "j"}],
+        "admins": [
+            {"adminId": "j"},
+            {"adminId": "best"}
+        ],
         "users": [
             {"userId": "j"},
-            {"userId": "oo"},
             {"userId": "best"}
         ]
     },
