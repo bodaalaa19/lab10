@@ -98,6 +98,8 @@ public class Lab99 {
             
             //Group.addToGroup("group1645596773", "best");
             //Group.addToGroup("group1645596773", "oo");
+            //Group.addToGroup("group1645596773", "k");
+            //Group.addToGroup("group1645596773", "ahmed");
             //Group.removeUserFromGroup("group1645596773", "j", "oo");
             //Group.addPostToGroup("group1645596773", "best", "bestpost1ingroup", LocalDateTime.now(), "image1");
             //Group.addPostToGroup("group1645596773", "best", "bestPost2", LocalDateTime.now(), "img2");
@@ -105,7 +107,17 @@ public class Lab99 {
             
             //Group.editGroupPost("group1645596773", "j", "post1822775443", "bestEditedPost1byAdmin");
             
-            Group.promoteToAdmin("group1645596773", "j", "okk");
+            //Group.promoteToAdmin("group1645596773", "j", "ahmed");
+            //Group.demoteFromAdmin("group1645596773", "ahmed", "best");
+            
+            //System.out.println(Group.isCreator("group1645596773", "j"));
+            /*ArrayList<Group> groups=Group.searchForGroup("group");
+            System.out.println(groups.size()+"\n");
+            for(int i=0;i<groups.size();i++){
+                System.out.println(groups.get(i).getGroupName());
+            }*/
+            
+            
         }
 
 }
