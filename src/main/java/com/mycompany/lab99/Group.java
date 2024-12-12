@@ -633,7 +633,49 @@ public class Group {
         }
         return result;
     }
-    
+    public static void leaveGroup(String groupId, String userId) {
+    ArrayList<Group> groups = loadGroups();
+
+    // Find the desired group
+    Group wantedGroup = null;
+    for (Group group : groups) {
+        if (groupId.equals(group.getGroupId())) {
+            wantedGroup = group;
+            break;
+        }
+    }
+
+    if (wantedGroup == null) {
+        JOptionPane.showMessageDialog(null, "Group doesn't exist");
+        return;
+    }
+
+    // Check if the user is a member of the group
+    if (!wantedGroup.getUserIds().contains(userId)) {
+        JOptionPane.showMessageDialog(null, "User is not a member of the group");
+        return;
+    }
+
+    // Prevent the group creator from leaving
+    if (userId.equals(wantedGroup.getGroupCreator())) {
+        JOptionPane.showMessageDialog(null, "Group creator cannot leave the group");
+        return;
+    }
+
+    // Remove the user from the group
+    wantedGroup.getUserIds().remove(userId);
+
+    // If the user is an admin, remove them from the admin list
+    if (wantedGroup.getAdminIds().contains(userId)) {
+        wantedGroup.getAdminIds().remove(userId);
+    }
+
+    JOptionPane.showMessageDialog(null, "User has left the group");
+
+    // Save updated group information
+    saveGroups(groups);
+}
+ 
     public static ArrayList<String> getAllGroupsForUser(String userId){
         ArrayList<String> groupNames=new ArrayList<>(); //arraylist for group names user is a member pf
         ArrayList<Group> groups = loadGroups(); //loads all grouops from json file
