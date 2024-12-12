@@ -65,6 +65,11 @@ public class Groups extends javax.swing.JFrame {
         });
 
         GroupSearchBtn.setText("Search");
+        GroupSearchBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GroupSearchBtnActionPerformed(evt);
+            }
+        });
 
         JoinGroupBtn.setBackground(new java.awt.Color(204, 204, 255));
         JoinGroupBtn.setText("Join Group");
@@ -163,6 +168,10 @@ ArrayList<Group> groups=Group.loadGroups();
         ViewGroup viewGroup=new ViewGroup(l);
         viewGroup.setVisible(true);
     }//GEN-LAST:event_ViewGroupActionPerformed
+
+    private void GroupSearchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GroupSearchBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_GroupSearchBtnActionPerformed
 
     /**
      * @param args the command line arguments
