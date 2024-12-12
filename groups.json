@@ -37,7 +37,8 @@
         "admins": [{"adminId": "j"}],
         "users": [
             {"userId": "j"},
-            {"userId": "oo"}
+            {"userId": "oo"},
+            {"userId": "best"}
         ]
     },
     {
