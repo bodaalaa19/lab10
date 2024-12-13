@@ -18,6 +18,20 @@
                 "userId": "alii",
                 "content": "aa",
                 "timestamp": "12-12-2024 21:29"
+            },
+            {
+                "imagesrc": "null",
+                "postId": "post1790969122",
+                "userId": "alii",
+                "content": "hhhhh",
+                "timestamp": "13-12-2024 13:03"
+            },
+            {
+                "imagesrc": "null",
+                "postId": "post894718018",
+                "userId": "alii",
+                "content": "heyy",
+                "timestamp": "13-12-2024 13:04"
             }
         ],
         "admins": [
@@ -26,22 +40,9 @@
         ],
         "users": [
             {"userId": "j"},
-            {"userId": "best"},
             {"userId": "mohamed"},
-            {"userId": "alii"}
-        ]
-    },
-    {
-        "groupName": "aaaa",
-        "groupId": "group1394628288",
-        "groupCreator": "best",
-        "groupPhoto": "C:\\Users\\Victus\\Documents\\GitHub\\lab10\\src\\main\\java\\com\\mycompany\\lab99\\defaultCover.jpg",
-        "posts": [],
-        "admins": [{"adminId": "best"}],
-        "users": [
-            {"userId": "best"},
-            {"userId": "oo"},
-            {"userId": "alii"}
+            {"userId": "alii"},
+            {"userId": "best"}
         ]
     },
     {

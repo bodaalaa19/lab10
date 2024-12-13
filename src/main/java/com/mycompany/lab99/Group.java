@@ -697,7 +697,7 @@ public class Group {
 
         // Save updated group information
         saveGroups(groups);
-    }
+    
 
 
     JOptionPane.showMessageDialog(null, "User has left the group");
@@ -745,7 +745,7 @@ public class Group {
 
         return groupId;
 
-    
+}
     public static ArrayList<Group> suggestGroups(String userId){
         ArrayList<Group> groups=loadGroups(); //loads all grouops from json file
         
