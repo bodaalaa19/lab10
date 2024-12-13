@@ -4,20 +4,31 @@
         "groupId": "group1645596773",
         "groupCreator": "j",
         "groupPhoto": "C:\\Users\\Victus\\Downloads\\downloaded images\\emoticon.png",
-        "posts": [{
-            "imagesrc": "C:\\Users\\Victus\\Downloads\\downloaded images\\emoticon.png",
-            "postId": "post1953790154",
-            "userId": "best",
-            "content": "bestPost22222222",
-            "timestamp": "11-12-2024 17:15"
-        }],
+        "posts": [
+            {
+                "imagesrc": "C:\\Users\\Victus\\Downloads\\downloaded images\\emoticon.png",
+                "postId": "post1953790154",
+                "userId": "best",
+                "content": "bestPost22222222",
+                "timestamp": "11-12-2024 17:15"
+            },
+            {
+                "imagesrc": "null",
+                "postId": "post1906252556",
+                "userId": "alii",
+                "content": "aa",
+                "timestamp": "12-12-2024 21:29"
+            }
+        ],
         "admins": [
             {"adminId": "j"},
             {"adminId": "best"}
         ],
         "users": [
             {"userId": "j"},
-            {"userId": "best"}
+            {"userId": "best"},
+            {"userId": "mohamed"},
+            {"userId": "alii"}
         ]
     },
     {
@@ -29,7 +40,8 @@
         "admins": [{"adminId": "best"}],
         "users": [
             {"userId": "best"},
-            {"userId": "oo"}
+            {"userId": "oo"},
+            {"userId": "alii"}
         ]
     },
     {
@@ -39,15 +51,21 @@
         "groupPhoto": "C:\\Users\\Victus\\Downloads\\downloaded images\\report.png",
         "posts": [],
         "admins": [{"adminId": "best"}],
-        "users": [{"userId": "best"}]
-    }
+        "users": [
+            {"userId": "best"},
+            {"userId": "alii"}
+        ]
+    },
+    {
         "groupName": "newG",
         "groupId": "group534161621",
         "groupCreator": "best",
         "groupPhoto": "C:\\Users\\Victus\\Downloads\\downloaded images\\penguin.png",
         "posts": [],
         "admins": [{"adminId": "best"}],
-        "users": [{"userId": "best"}]
-
+        "users": [
+            {"userId": "best"},
+            {"userId": "alii"}
+        ]
     }
 ]

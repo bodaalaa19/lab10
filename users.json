@@ -52,7 +52,7 @@
         "email": "best"
     },
     {
-        "Status": "offline",
+        "Status": "online",
         "hashedPassword": "nVpFv7jaAFM1GCiVATRQ9loQOrLmyONgRWWTELKKul4=",
         "profile": {
             "profilePhoto": "C:\\Users\\Victus\\Downloads\\eat.png",
@@ -208,7 +208,7 @@
         "email": "2"
     },
     {
-        "Status": "offline",
+        "Status": "online",
         "hashedPassword": "V15QDdtSnMLlsU3W5/6ziai24NfCsWK2vzGDHGTSNZI=",
         "profile": {
             "profilePhoto": "C:\\Users\\Victus\\Downloads\\downloaded images\\duck.png",

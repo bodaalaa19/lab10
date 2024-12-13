@@ -352,7 +352,7 @@ ArrayList<String>a=group.getUserIds();
         memberListModel.addElement(member);
     }
     GroupMembersList.setModel(memberListModel);
- 
+
     }//GEN-LAST:event_refresshBtnActionPerformed
 
     private void DeletePostBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeletePostBtnActionPerformed
